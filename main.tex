@@ -1,0 +1,122 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{tikz-cd}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{positioning}
+\usepackage{scalerel}
+\usepackage{pict2e}
+\usepackage{tkz-euclide}
+\usepackage{nicematrix, mathtools}
+\usepackage{adjustbox}
+\usepackage{xparse}
+\usepackage{expl3}
+\usepackage{pdfpages}
+\usepackage[symbols,nogroupskip,sort=none, toc=true]{glossaries-extra}
+
+\usetikzlibrary{calc}
+\usetikzlibrary{patterns,arrows.meta}
+\usetikzlibrary{shadows}
+\usetikzlibrary{external}
+\usepackage[style=alphabetic,sorting=nyt, backend=bibtex]{biblatex}
+%pgfplots
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{statistics}
+\usepgfplotslibrary{fillbetween}
+
+%colours
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{nicefrac}
+\usepackage{subfiles}
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+\title{Causal Spaces and String Diagrams}
+\author{Siddharth Setlur }
+\date{\today}
+\theoremstyle{plain}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{pro}{Proposition}[section]
+\theoremstyle{remark}
+\newtheorem{err}{Reminder}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}[section]
+\newtheorem*{form}{Formalism}
+\newtheorem*{nota}{Notation}
+
+\theoremstyle{remark}
+\newtheorem{ex}{Example}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\newcommand{\Hom}{\text{Hom}}
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+		\left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+		#1 % the function
+		\vphantom{\big|} % pretend it's a little taller at normal size
+		\right|_{#2} % this is the delimiter
+}}
+\newcommand{\vecc}{\textbf{vec}}
+\newcommand{\foralll}{\text{ for all }}
+\newcommand{\rk}{\text{Rk}}
+\newcommand{\rank}{\text{rank}}
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\dimb}{\textbf{dim}}
+\newcommand{\coker}{\text{coker}}
+\newcommand{\ima}{\text{Im}}
+\newcommand{\filt}{\text{Filt}}
+\newcommand{\pers}{\text{Pers}}
+\newcommand{\freefg}{\text{Free}_\text{fg}(}
+\newcommand{\barc}{\textbf{barc}}
+\newcommand{\hil}{\text{Hil}}
+\newcommand{\mult}{\text{mult}}
+\newcommand{\Filt}{\text{filt}}
+\newcommand{\proautorefname}{Proposition}
+\renewcommand{\sectionautorefname}{Section}
+\newcommand{\thmautorefname}{Theorem}
+\newcommand{\corautorefname}{Corollary}
+\newcommand{\defnautorefname}{Definition}
+\newcommand{\remautorefname}{Remark}
+\newcommand{\lemautorefname}{Lemma}
+\newcommand{\exautorefname}{Example}
+\renewcommand{\chapterautorefname}{Chapter}
+\addbibresource{references.bib} 
+
+
+
+\begin{document}
+    \maketitle
+	\pagenumbering{roman}	
+	% \chapter*{Abstract}
+	% \addcontentsline{toc}{chapter}{Abstract}
+	
+
+	% \tableofcontents
+
+
+	\section{Introduction}\label{sec:intro}
+	\pagenumbering{arabic}
+		\subfile{sections/introduction.tex}
+
+	\nocite{*}
+	\printbibliography
+\end{document}
