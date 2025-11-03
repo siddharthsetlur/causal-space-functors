@@ -20,6 +20,8 @@
 \usepackage{xparse}
 \usepackage{expl3}
 \usepackage{pdfpages}
+\usepackage{nicematrix}
+
 \usepackage[symbols,nogroupskip,sort=none, toc=true]{glossaries-extra}
 
 \usetikzlibrary{calc}
@@ -36,6 +38,7 @@
 
 %colours
 \usepackage{xcolor}
+\newcommand{\sid}[1]{{\color{red} Sid: #1}}
 \usepackage{float}
 \usepackage{nicefrac}
 \usepackage{subfiles}
@@ -111,12 +114,13 @@
 	
 
 	% \tableofcontents
+	\pagenumbering{arabic}
 
 
 	\section{Introduction}\label{sec:intro}
-	\pagenumbering{arabic}
 		\subfile{sections/introduction.tex}
-
+	\section{Causal Spaces}\label{sec:causal-spaces}
+		\subfile{sections/causal-spaces.tex}
 	\nocite{*}
 	\printbibliography
 \end{document}

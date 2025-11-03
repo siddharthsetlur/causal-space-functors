@@ -1,0 +1,100 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+    \begin{defn}[Causal Space]
+    \label{defn:Causal-Space}
+        A causal space is a product probability space ${(\Omega, \mathcal{H}, \mathbb{P}) = (\times_{t\in T}\Omega_t, \otimes_{t\in T}\mathcal{E}_t, \mathbb{P})}$ equipped with a collection of Markov kernels ${\mathbb{K} = \{K_S: S\in 2^T\}}$ called a \emph{causal mechanism}. The Markov kernels $K_S: (\Omega_S, \mathcal{H}_S)\to (\Omega, \mathcal{H})$ satisfy the following two axioms:
+        \begin{enumerate}
+            \item for all ${A\in \mathcal{H}}$ and ${\omega_s\in \Omega_s}$,\begin{align*}
+                K_{\emptyset}(\omega_S, A) &= \mathbb{P}(A);
+            \end{align*}
+            \item for all ${\omega_S\in \Omega_S}$, ${A\in \mathcal{H}_S}$, and ${B\in \mathcal{H}}$, 
+            \begin{align*}
+                K_S(\omega_S, A\cap B) &= 1_A(\omega_S)K_S(\omega_S, B) = \delta_{\omega_S}(A)K_S(\omega_S, B).
+            \end{align*}
+            In particular, for ${A\in \mathcal{H}_S}$, ${K_S(\omega_s,A) = \delta_{\omega_S}(A)}$.
+        \end{enumerate}
+    \end{defn}
+    \begin{rem}[Observational and interventional distributions]
+    \label{rem:Observational and interventional distribution}
+        In \autoref{defn:Causal-Space}, the probability measure $\mathbb{P}$ plays the role of the \emph{observational distribution} in the SCM framework. The causal mechanisms provide a means of computing interventional distributions. In particular, the kernel $K_S$ allows us to determine what happens when we intervene on a subset $S\in 2^T$ of variables of the system. 
+        
+        Viewed through this lens, axiom 1 simply says that intervening on the empty set (not intervening at all) has no effect (the distribution on any event $A$ after not intervening is just the observational distribution $\mathbb{P}(A)$). Axiom $2$ is a bit trickier to unravel, so we rephrase it below using the intuition developed in a simple example we consider next.
+    \end{rem}
+    \begin{ex}[Two variable binary causal space]
+    \label{ex:Two-variable-binary-causal-space}
+        Let $T=\{X,Y\}$ be a set of two variables and ${\Omega_X = \Omega_Y = \{0,1\}}$. Consider the product probability space ${(\Omega_X\times \Omega_Y, \mathcal{E}_X\otimes \mathcal{E}_Y, \mathbb{P})}$, where ${\mathcal{E}_X}$ and ${\mathcal{E}_Y}$ are the power sets of ${\Omega_X}$ and ${\Omega_Y}$, respectively and let ${\mathbb{P}}$ be the uniform distribution on $\Omega$. Axiom $2$ constrains $K_X$ and $K_Y$. Recall that a Markov kernel $K$ between discrete spaces ${(\Omega, \mathcal{H})}$ and ${(\Omega', \mathcal{H}')}$ can be written as a ${|\Omega'|\times |\Omega\|}$ matrix, ${K_{ij} = K(\omega'_i, \omega_j)}$. Thus, we can write 
+        \begin{align*}
+            K_X = \begin{pmatrix}
+               K_X(0, (0,0)) & K_X(1,(0,0))\\
+                K_X(0, (0,1)) & K_X(1,(0,1))\\
+                K_X(0, (1,0)) & K_X(1,(1,0))\\
+                K_X(0, (1,1)) & K_X(1,(1,1)).
+            \end{pmatrix}
+        \end{align*}
+        Axiom $2$ forces $K_X$ to be a block matrix of the form
+        \begin{align*}
+            K_X = \begin{pNiceArray}{c|c}
+                K_X(0, (0,0)) & \Block{2-1}<\Large>{\mathbf{0}} \\
+                K_X(0, (0,1)) \\
+                \hline
+                \Block{2-1}<\Large>{\mathbf{0}} & K_X(1, (1,0)) \\
+                & K_X(1, (1,1))
+              \end{pNiceArray}
+        \end{align*}
+        Indeed, we have $A = \{(0,0), (0,1)\}\in \mathcal{H}_X$ and so (by axiom 2) 
+        \begin{align*}
+            K_X(\omega_x, A) = \delta_{\omega_X}(A) = \begin{cases}
+                1 & \text{if } \omega_X = 0,\\
+                0 & \text{if } \omega_X = 1.
+            \end{cases}
+        \end{align*}
+        Similarly, for $B = \{(1,0), (1,1)\}\in \mathcal{H}_X$, we have
+        \begin{align*}
+            K_X(\omega_x, B) = \delta_{\omega_X}(B) = \begin{cases}
+                1 & \text{if } \omega_X = 1,\\
+                0 & \text{if } \omega_X = 0.
+            \end{cases}
+        \end{align*}
+        This yields the block structure above since ${K_X(0,B)=0}$ and ${K_X(1,A)=0}$ while the other two entries are non-zero and must sum to $1$. Intuitively, ${K_S(0,A)}$ is the probability distribution on ${A}$ after intervening by setting $X=0$. If ${A}$ does not contain an event where ${X=0}$, then the intervention makes ${A}$ impossible, hence the probability is $0$. Conversely, if $A$ contains all the events where $X=0$, then after intervening to set $X=0$, the probability of $A$ is $1$.
+    \end{ex}
+    \begin{lem}[Rephrasing axiom 2]
+    \label{lem:Rephrasing-axiom-2}
+        Axiom 2 of \autoref{defn:Causal-Space}  can be rephrased as follows: for all ${\omega_S\in\Omega_S}$ and ${B\in \mathcal{H}}$:
+        \begin{align*}
+            K_S(\omega_S, B) &=\begin{cases}
+                 0 & \text{if } \omega_S\notin \pi_S(B)\\
+                 K_S(\omega_{S}, B\cap \{\Omega_{T\setminus S}\times \omega_S\}) & \text{if } \omega_S\in \pi_S(B).
+            \end{cases}
+        \end{align*}
+        where ${\pi_S(B)}$ denotes the projection of ${B}$ onto ${\Omega_S}$ \sid{I think we only need case $2$. If $\omega_S\notin \pi_S(B)$, then $B\cap \{\Omega_{T\setminus S}\times \omega_S\}=\emptyset$ and so $K_S(\omega_{S}, B\cap \{\Omega_{T\setminus S}\times \omega_S\})=0$ anyway.}
+    \end{lem}
+    \begin{proof}
+        We first show that axiom 2 implies the statement above. Let ${\omega_S\in\Omega_S}$ and ${B\in \mathcal{H}}$ be arbitrary. Suppose ${\omega_S\notin \pi_S(B)}$ and set ${A = \{\omega_S\}\times \Omega_{T\setminus S}\in \mathcal{H}_S}$. Applying axiom 2, we get 
+        \begin{align*}
+              K_S(\omega_S, A\cap B) &= \delta_{\omega_S}(A)K_S(\omega_S, B).
+        \end{align*}
+        Due to ${\omega_S\notin \pi_S(B)}$, we have ${A\cap B = \emptyset}$  and consequently ${K_S(\omega_S, A\cap B) = 0 }$. On the right hand side, we have ${\delta_{\omega_S}(A) = 1}$ since ${\omega_S\in A}$. Thus, we conclude that ${K_S(\omega_S, B) = 0}$.
+
+        Suppose now that ${\omega_S\in \pi_S(B)}$ and set ${A = \{\omega_S\}\times \Omega_{T\setminus S}\in \mathcal{H}_S}$. Applying axiom 2 again, we get
+        \begin{align*}
+            K_S(\omega_S, A\cap B) &= \delta_{\omega_S}(A)K_S(\omega_S, B) = K_S(\omega_S, B).
+        \end{align*}
+        Conversely, suppose the statement above holds and let ${\omega_S\in \Omega_S}$, ${A\in \mathcal{H}_S}$, and ${B\in \mathcal{H}}$ be arbitrary. We have two cases to consider. First, consider the case where ${\omega_S\in A}$. We need to use the rephrased axiom to show 
+        \begin{align*}
+            K_S(\omega_S, A\cap B) &= K_S(\omega_S, B)
+        \end{align*}
+        (since ${\delta_{\omega_S}(A)=1}$). If ${A\cap B = \emptyset}$, then in particular ${\omega_S\notin \pi_S(B)}$ (since ${\omega_S\in A}$ by assumption). Thus, by the rephrased axiom, we have ${K_S(\omega_S, B) = 0 = }K_S(\omega_S, \emptyset)$. Assume ${A\cap B\neq \empty}$ and apply the rephrased axiom to this set noting that by construction ${\omega_S\in \pi_S(A\cap B)}$. 
+        \begin{align*}
+            K_S(\omega_S, A\cap B)&= K_S(\omega_S, B\cap A \cap \{\omega_S\times \Omega_{T\setminus S}\})\\
+            &\stackrel{\spadesuit}{=} K_S(\omega_S, B\cap \{\omega_S\times \Omega_{T\setminus S}\})\\
+            &\stackrel{\diamondsuit}{=}K_S(\omega_S, B).
+        \end{align*}
+        where ${(\spadesuit)}$ follows from the fact that ${A\cap \{\omega_S\times \Omega_{T\setminus S}\} = \{\omega_S\times \Omega_{T\setminus S}\}}$ (since ${\omega_S\in A}$) and ${(\diamondsuit)}$ follows from applying the rephrased axiom.\sid{The final step is more elgant if we use the definition of the axiom where we don't have the two cases (see my comment above). If we do have the two cases we just need to make a comment in the $\diamondsuit$ step that if the intersection is empty we get $0$ but this is OK since the interesection being empty means that $\omega_S\notin\pi_S(B)$ and so we get $K_S(\omega, B)$ eitherway}.  
+        On the other hand, if ${\omega_S\notin A}$, we need to show that
+        \begin{align*}
+            K_S(\omega_S, A\cap B) &= 0.
+        \end{align*}
+        Let ${\tilde{B} = A\cap B}$. We can assume without loss of generality that ${\tilde{B} = \emptyset}$, since there is nothing to show otherwrise (by definition we have ${K_S(\omega_S, A\cap B)=0}$). Note that ${\omega_S\notin\pi(\tilde{B})}$, since ${\omega_S\notin A}$. So, applying the rephrased axiom to ${\tilde{B}}$, we get ${K_S(\omega_S, \tilde{B}) = 0}$ as desired. 
+    \end{proof}
+       
+\end{document}

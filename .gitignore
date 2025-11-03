@@ -1,0 +1,15 @@
+# Ignore everything by default
+*
+
+# But don't ignore directories (so we can recurse into them)
+!*/
+
+# Don't ignore .tex files anywhere
+!**/*.tex
+!**/*.png
+!**/*.img
+# Don't ignore the referencesbib file
+!**/*referencesbib
+
+# Don't ignore this .gitignore file
+!.gitignore

@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.1 $
+% $ biblatex bbl format version 3.2 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -50,23 +50,12 @@
     \field{sortinit}{B}
     \field{sortinithash}{B}
     \field{abstract}{%
-    Causal spaces have recently been introduced as a measure-theoretic
-  framework to encode the notion of causality. While it has some advantages
-  over established frameworks, such as structural causal models, the theory is
-  so far only developed for single causal spaces. In many mathematical
-  theories, not least the theory of probability spaces of which causal spaces
-  are a direct extension, combinations of objects and maps between objects form
-  a central part. In this paper, taking inspiration from such objects in
-  probability theory, we propose the definitions of products of causal spaces,
-  as well as (stochastic) transformations between causal spaces. In the context
-  of causality, these quantities can be given direct semantic interpretations
-  as causally independent components, abstractions and extensions.%
+    Causal spaces have recently been introduced as a measure-theoretic framework to encode the notion of causality. While it has some advantages over established frameworks, such as structural causal models, the theory is so far only developed for single causal spaces. In many mathematical theories, not least the theory of probability spaces of which causal spaces are a direct extension, combinations of objects and maps between objects form a central part. In this paper, taking inspiration from such objects in probability theory, we propose the definitions of products of causal spaces, as well as (stochastic) transformations between causal spaces. In the context of causality, these quantities can be given direct semantic interpretations as causally independent components, abstractions and extensions.%
     }
     \verb{doi}
     \verb 10.48550/ARXIV.2406.00388
     \endverb
-    \field{title}{Products, {Abstractions} and {Inclusions} of {Causal}
-  {Spaces}}
+    \field{title}{Products, {Abstractions} and {Inclusions} of {Causal} {Spaces}}
     \verb{url}
     \verb https://arxiv.org/abs/2406.00388
     \endverb
@@ -99,19 +88,7 @@
     \field{sortinit}{F}
     \field{sortinithash}{F}
     \field{abstract}{%
-    The d-separation criterion detects the compatibility of a joint probability
-  distribution with a directed acyclic graph through certain conditional
-  independences. In this work, we study this problem in the context of
-  categorical probability theory by introducing a categorical definition of
-  causal models, a categorical notion of d-separation, and proving an abstract
-  version of the d-separation criterion. This approach has two main benefits.
-  First, categorical d-separation is a very intuitive criterion based on
-  topological connectedness. Second, our results apply both to
-  measure-theoretic probability (with standard Borel spaces) and beyond
-  probability theory, including to deterministic and possibilistic networks. It
-  therefore provides a clean proof of the equivalence of local and global
-  Markov properties with causal compatibility for continuous and mixed random
-  variables as well as deterministic and possibilistic variables.%
+    The d-separation criterion detects the compatibility of a joint probability distribution with a directed acyclic graph through certain conditional independences. In this work, we study this problem in the context of categorical probability theory by introducing a categorical definition of causal models, a categorical notion of d-separation, and proving an abstract version of the d-separation criterion. This approach has two main benefits. First, categorical d-separation is a very intuitive criterion based on topological connectedness. Second, our results apply both to measure-theoretic probability (with standard Borel spaces) and beyond probability theory, including to deterministic and possibilistic networks. It therefore provides a clean proof of the equivalence of local and global Markov properties with causal compatibility for continuous and mixed random variables as well as deterministic and possibilistic variables.%
     }
     \field{issn}{1533-7928}
     \field{number}{46}
@@ -158,8 +135,7 @@
     \list{publisher}{1}{%
       {arXiv}%
     }
-    \keyw{Artificial Intelligence (cs.AI), FOS: Computer and information
-  sciences, Machine Learning (cs.LG)}
+    \keyw{Artificial Intelligence (cs.AI), FOS: Computer and information sciences, Machine Learning (cs.LG)}
     \strng{namehash}{GA+1}
     \strng{fullhash}{GALHITPC1}
     \field{labelnamesource}{author}
@@ -168,22 +144,7 @@
     \field{sortinit}{G}
     \field{sortinithash}{G}
     \field{abstract}{%
-    Structural analysis methods (e.g., probing and feature attribution) are
-  increasingly important tools for neural network analysis. We propose a new
-  structural analysis method grounded in a formal theory of causal abstraction
-  that provides rich characterizations of model-internal representations and
-  their roles in input/output behavior. In this method, neural representations
-  are aligned with variables in interpretable causal models, and then
-  interchange interventions are used to experimentally verify that the neural
-  representations have the causal properties of their aligned variables. We
-  apply this method in a case study to analyze neural models trained on
-  Multiply Quantified Natural Language Inference (MQNLI) corpus, a highly
-  complex NLI dataset that was constructed with a tree-structured natural logic
-  causal model. We discover that a BERT-based model with state-of-the-art
-  performance successfully realizes parts of the natural logic model's causal
-  structure, whereas a simpler baseline model fails to show any such structure,
-  demonstrating that BERT representations encode the compositional structure of
-  MQNLI.%
+    Structural analysis methods (e.g., probing and feature attribution) are increasingly important tools for neural network analysis. We propose a new structural analysis method grounded in a formal theory of causal abstraction that provides rich characterizations of model-internal representations and their roles in input/output behavior. In this method, neural representations are aligned with variables in interpretable causal models, and then interchange interventions are used to experimentally verify that the neural representations have the causal properties of their aligned variables. We apply this method in a case study to analyze neural models trained on Multiply Quantified Natural Language Inference (MQNLI) corpus, a highly complex NLI dataset that was constructed with a tree-structured natural logic causal model. We discover that a BERT-based model with state-of-the-art performance successfully realizes parts of the natural logic model's causal structure, whereas a simpler baseline model fails to show any such structure, demonstrating that BERT representations encode the compositional structure of MQNLI.%
     }
     \verb{doi}
     \verb 10.48550/ARXIV.2106.02997
@@ -272,27 +233,13 @@
     \field{sortinit}{G}
     \field{sortinithash}{G}
     \field{abstract}{%
-    Causal abstraction provides a theoretical foundation for mechanistic
-  interpretability, the field concerned with providing intelligible algorithms
-  that are faithful simplifications of the known, but opaque low-level details
-  of black box AI models. Our contributions are (1) generalizing the theory of
-  causal abstraction from mechanism replacement (i.e., hard and soft
-  interventions) to arbitrary mechanism transformation (i.e., functionals from
-  old mechanisms to new mechanisms), (2) providing a flexible, yet precise
-  formalization for the core concepts of polysemantic neurons, the linear
-  representation hypothesis, modular features, and graded faithfulness, and (3)
-  unifying a variety of mechanistic interpretability methods in the common
-  language of causal abstraction, namely, activation and path patching, causal
-  mediation analysis, causal scrubbing, causal tracing, circuit analysis,
-  concept erasure, sparse autoencoders, differential binary masking,
-  distributed alignment search, and steering.%
+    Causal abstraction provides a theoretical foundation for mechanistic interpretability, the field concerned with providing intelligible algorithms that are faithful simplifications of the known, but opaque low-level details of black box AI models. Our contributions are (1) generalizing the theory of causal abstraction from mechanism replacement (i.e., hard and soft interventions) to arbitrary mechanism transformation (i.e., functionals from old mechanisms to new mechanisms), (2) providing a flexible, yet precise formalization for the core concepts of polysemantic neurons, the linear representation hypothesis, modular features, and graded faithfulness, and (3) unifying a variety of mechanistic interpretability methods in the common language of causal abstraction, namely, activation and path patching, causal mediation analysis, causal scrubbing, causal tracing, circuit analysis, concept erasure, sparse autoencoders, differential binary masking, distributed alignment search, and steering.%
     }
     \field{issn}{1533-7928}
     \field{number}{83}
     \field{pages}{1\bibrangedash 64}
     \field{shorttitle}{Causal {Abstraction}}
-    \field{title}{Causal {Abstraction}: {A} {Theoretical} {Foundation} for
-  {Mechanistic} {Interpretability}}
+    \field{title}{Causal {Abstraction}: {A} {Theoretical} {Foundation} for {Mechanistic} {Interpretability}}
     \verb{url}
     \verb http://jmlr.org/papers/v26/23-0058.html
     \endverb
@@ -318,23 +265,7 @@
     \field{sortinit}{H}
     \field{sortinithash}{H}
     \field{abstract}{%
-    Abstract In social sciences and economics, causal inference traditionally
-  focuses on assessing the impact of predefined treatments (or interventions)
-  on predefined outcomes, such as the effect of education programs on earnings.
-  Causal discovery, in contrast, aims to uncover causal relationships among
-  multiple variables in a data-driven manner, by investigating statistical
-  associations rather than relying on predefined causal structures. This
-  approach, more common in computer science, seeks to understand causality in
-  an entire system of variables, which can be visualized by causal graphs. This
-  survey provides an introduction to key concepts, algorithms, and applications
-  of causal discovery from the perspectives of economics and social sciences.
-  It covers fundamental concepts like d-separation, causal faithfulness, and
-  Markov equivalence, sketches various algorithms for causal discovery and
-  discusses the back-door and front-door criteria for identifying causal
-  effects. The survey concludes with more specific examples of causal
-  discovery, e.g., for learning all variables that directly affect an outcome
-  of interest and/or testing identification of causal effects in observational
-  data.%
+    Abstract In social sciences and economics, causal inference traditionally focuses on assessing the impact of predefined treatments (or interventions) on predefined outcomes, such as the effect of education programs on earnings. Causal discovery, in contrast, aims to uncover causal relationships among multiple variables in a data-driven manner, by investigating statistical associations rather than relying on predefined causal structures. This approach, more common in computer science, seeks to understand causality in an entire system of variables, which can be visualized by causal graphs. This survey provides an introduction to key concepts, algorithms, and applications of causal discovery from the perspectives of economics and social sciences. It covers fundamental concepts like d-separation, causal faithfulness, and Markov equivalence, sketches various algorithms for causal discovery and discusses the back-door and front-door criteria for identifying causal effects. The survey concludes with more specific examples of causal discovery, e.g., for learning all variables that directly affect an outcome of interest and/or testing identification of causal effects in observational data.%
     }
     \verb{doi}
     \verb 10.1186/s41937-024-00131-4
@@ -401,29 +332,9 @@
     \field{sortinit}{J}
     \field{sortinithash}{J}
     \field{abstract}{%
-    Abstract Extracting causal relationships from observed correlations is a
-  growing area in probabilistic reasoning, originating with the seminal work of
-  Pearl and others from the early 1990s. This paper develops a new,
-  categorically oriented view based on a clear distinction between syntax
-  (string diagrams) and semantics (stochastic matrices), connected via
-  interpretations as structure-preserving functors. A key notion in the
-  identification of causal effects is that of an intervention, whereby a
-  variable is forcefully set to a particular value independent of any prior
-  dependencies. We represent the effect of such an intervention as an
-  endofunctor which performs ‘string diagram surgery’ within the syntactic
-  category of string diagrams. This diagram surgery in turn yields a new,
-  interventional distribution via the interpretation functor. While in general
-  there is no way to compute interventional distributions purely from observed
-  data, we show that this is possible in certain special cases using a
-  calculational tool called comb disintegration. We showcase this technique on
-  a well-known example, predicting the causal effect of smoking on cancer in
-  the presence of a confounding common cause. We then conclude by showing that
-  this technique provides simple sufficient conditions for computing
-  interventions which apply to a wide variety of situations considered in the
-  causal inference literature.%
+    Abstract Extracting causal relationships from observed correlations is a growing area in probabilistic reasoning, originating with the seminal work of Pearl and others from the early 1990s. This paper develops a new, categorically oriented view based on a clear distinction between syntax (string diagrams) and semantics (stochastic matrices), connected via interpretations as structure-preserving functors. A key notion in the identification of causal effects is that of an intervention, whereby a variable is forcefully set to a particular value independent of any prior dependencies. We represent the effect of such an intervention as an endofunctor which performs ‘string diagram surgery’ within the syntactic category of string diagrams. This diagram surgery in turn yields a new, interventional distribution via the interpretation functor. While in general there is no way to compute interventional distributions purely from observed data, we show that this is possible in certain special cases using a calculational tool called comb disintegration. We showcase this technique on a well-known example, predicting the causal effect of smoking on cancer in the presence of a confounding common cause. We then conclude by showing that this technique provides simple sufficient conditions for computing interventions which apply to a wide variety of situations considered in the causal inference literature.%
     }
-    \field{booktitle}{Foundations of Software Science and Computation
-  Structures}
+    \field{booktitle}{Foundations of Software Science and Computation Structures}
     \verb{doi}
     \verb 10.1007/978-3-030-17127-8_18
     \endverb
@@ -485,8 +396,7 @@
     \list{publisher}{1}{%
       {arXiv}%
     }
-    \keyw{Computer Science - Logic in Computer Science, Computer Science -
-  Machine Learning, Mathematics - Category Theory}
+    \keyw{Computer Science - Logic in Computer Science, Computer Science - Machine Learning, Mathematics - Category Theory}
     \strng{namehash}{LRTS1}
     \strng{fullhash}{LRTS1}
     \field{labelnamesource}{author}
@@ -495,32 +405,7 @@
     \field{sortinit}{L}
     \field{sortinithash}{L}
     \field{abstract}{%
-    The framework of causal models provides a principled approach to causal
-  reasoning, applied today across many scientific domains. Here we present this
-  framework in the language of string diagrams, interpreted formally using
-  category theory. A class of string diagrams, called network diagrams, are in
-  1-to-1 correspondence with directed acyclic graphs. A causal model is given
-  by such a diagram with its components interpreted as stochastic maps,
-  functions, or general channels in a symmetric monoidal category with a
-  'copy-discard' structure (cd-category), turning a model into a single
-  mathematical object that can be reasoned with intuitively and yet rigorously.
-  Building on prior works by Fong and Jacobs, Kissinger and Zanasi, as well as
-  Fritz and Klingler, we present diagrammatic definitions of causal models and
-  functional causal models in a cd-category, generalising causal Bayesian
-  networks and structural causal models, respectively. We formalise general
-  interventions on a model, including but beyond do-interventions, and present
-  the natural notion of an open causal model with inputs. We also give an
-  approach to conditioning based on a normalisation box, allowing for causal
-  inference calculations to be done fully diagrammatically. We define
-  counterfactuals in this setup, and treat the problems of the identifiability
-  of causal effects and counterfactuals fully diagrammatically. The benefits of
-  such a presentation of causal models lie in foundational questions in causal
-  reasoning and in their clarificatory role and pedagogical value. This work
-  aims to be accessible to different communities, from causal model
-  practitioners to researchers in applied category theory, and discusses many
-  examples from the literature for illustration. Overall, we argue and
-  demonstrate that causal reasoning according to the causal model framework is
-  most naturally and intuitively done as diagrammatic reasoning.%
+    The framework of causal models provides a principled approach to causal reasoning, applied today across many scientific domains. Here we present this framework in the language of string diagrams, interpreted formally using category theory. A class of string diagrams, called network diagrams, are in 1-to-1 correspondence with directed acyclic graphs. A causal model is given by such a diagram with its components interpreted as stochastic maps, functions, or general channels in a symmetric monoidal category with a 'copy-discard' structure (cd-category), turning a model into a single mathematical object that can be reasoned with intuitively and yet rigorously. Building on prior works by Fong and Jacobs, Kissinger and Zanasi, as well as Fritz and Klingler, we present diagrammatic definitions of causal models and functional causal models in a cd-category, generalising causal Bayesian networks and structural causal models, respectively. We formalise general interventions on a model, including but beyond do-interventions, and present the natural notion of an open causal model with inputs. We also give an approach to conditioning based on a normalisation box, allowing for causal inference calculations to be done fully diagrammatically. We define counterfactuals in this setup, and treat the problems of the identifiability of causal effects and counterfactuals fully diagrammatically. The benefits of such a presentation of causal models lie in foundational questions in causal reasoning and in their clarificatory role and pedagogical value. This work aims to be accessible to different communities, from causal model practitioners to researchers in applied category theory, and discusses many examples from the literature for illustration. Overall, we argue and demonstrate that causal reasoning according to the causal model framework is most naturally and intuitively done as diagrammatic reasoning.%
     }
     \verb{doi}
     \verb 10.48550/arXiv.2304.07638
@@ -599,8 +484,7 @@
     \list{publisher}{1}{%
       {arXiv}%
     }
-    \keyw{Computer Science - Artificial Intelligence, Mathematics - Statistics
-  Theory, Statistics - Statistics Theory}
+    \keyw{Computer Science - Artificial Intelligence, Mathematics - Statistics Theory, Statistics - Statistics Theory}
     \strng{namehash}{PJ+1}
     \strng{fullhash}{PJBSSBMK1}
     \field{labelnamesource}{author}
@@ -609,19 +493,7 @@
     \field{sortinit}{P}
     \field{sortinithash}{P}
     \field{abstract}{%
-    Causality is a central concept in a wide range of research areas, yet there
-  is still no universally agreed axiomatisation of causality. We view causality
-  both as an extension of probability theory and as a study of
-  {\textbackslash}textit\{what happens when one intervenes on a system\}, and
-  argue in favour of taking Kolmogorov's measure-theoretic axiomatisation of
-  probability as the starting point towards an axiomatisation of causality. To
-  that end, we propose the notion of a {\textbackslash}textit\{causal space\},
-  consisting of a probability space along with a collection of transition
-  probability kernels, called {\textbackslash}textit\{causal kernels\}, that
-  encode the causal information of the space. Our proposed framework is not
-  only rigorously grounded in measure theory, but it also sheds light on
-  long-standing limitations of existing frameworks including, for example,
-  cycles, latent variables and stochastic processes.%
+    Causality is a central concept in a wide range of research areas, yet there is still no universally agreed axiomatisation of causality. We view causality both as an extension of probability theory and as a study of {\textbackslash}textit\{what happens when one intervenes on a system\}, and argue in favour of taking Kolmogorov's measure-theoretic axiomatisation of probability as the starting point towards an axiomatisation of causality. To that end, we propose the notion of a {\textbackslash}textit\{causal space\}, consisting of a probability space along with a collection of transition probability kernels, called {\textbackslash}textit\{causal kernels\}, that encode the causal information of the space. Our proposed framework is not only rigorously grounded in measure theory, but it also sheds light on long-standing limitations of existing frameworks including, for example, cycles, latent variables and stochastic processes.%
     }
     \verb{doi}
     \verb 10.48550/arXiv.2305.17139
@@ -652,25 +524,7 @@
     \field{sortinit}{P}
     \field{sortinithash}{P}
     \field{abstract}{%
-    Machine learning expert Jonas Peters of the University of Copenhagen
-  presents “Four Lectures on Causality”. Produced by the Laboratory for
-  Information \& Decision Systems (LIDS) of MIT (https://lids.mit.edu/) and
-  Models, Inference \& Algorithms of the Broad Institute
-  (https://broadinstitute.org/mia). Most of recent machine learning is focused
-  on pure predictive performance, which has been a driving force behind its
-  practical success. The question of causality (understanding why predictions
-  work) has been somewhat left behind. This paradigm is incredibly important,
-  because it can help understand things like which genes cause which diseases,
-  and which policy affects which economic indicator, for example. In the field
-  of causality we want to understand how a system reacts under interventions
-  (e.g. in gene knock-out experiments). These questions go beyond statistical
-  dependences and can therefore not be answered by standard regression or
-  classification techniques. In this tutorial you will learn about the
-  interesting problem of causal inference and recent developments in the field.
-  No prior knowledge about causality is required. Part 1: We introduce
-  structural causal models and formalize interventional distributions. We
-  define causal effects and show how to compute them if the causal structure is
-  known.%
+    Machine learning expert Jonas Peters of the University of Copenhagen presents “Four Lectures on Causality”. Produced by the Laboratory for Information \& Decision Systems (LIDS) of MIT (https://lids.mit.edu/) and Models, Inference \& Algorithms of the Broad Institute (https://broadinstitute.org/mia). Most of recent machine learning is focused on pure predictive performance, which has been a driving force behind its practical success. The question of causality (understanding why predictions work) has been somewhat left behind. This paradigm is incredibly important, because it can help understand things like which genes cause which diseases, and which policy affects which economic indicator, for example. In the field of causality we want to understand how a system reacts under interventions (e.g. in gene knock-out experiments). These questions go beyond statistical dependences and can therefore not be answered by standard regression or classification techniques. In this tutorial you will learn about the interesting problem of causal inference and recent developments in the field. No prior knowledge about causality is required. Part 1: We introduce structural causal models and formalize interventional distributions. We define causal effects and show how to compute them if the causal structure is known.%
     }
     \field{title}{Lectures on {Causality}: {Jonas} {Peters}, {Part} 1}
     \verb{url}
@@ -716,16 +570,12 @@
     \field{sortinit}{P}
     \field{sortinithash}{P}
     \field{abstract}{%
-    "The mathematization of causality is a relatively recent development, and
-  has become increasingly important in data science and machine learning. This
-  book offers a self-contained and concise introduction to causal models and
-  how to learn them from data"--Back of book%
+    "The mathematization of causality is a relatively recent development, and has become increasingly important in data science and machine learning. This book offers a self-contained and concise introduction to causal models and how to learn them from data"--Back of book%
     }
     \field{isbn}{9780262037310}
     \field{series}{Adaptive computation and machine learning}
     \field{shorttitle}{Elements of causal inference}
-    \field{title}{Elements of causal inference: foundations and learning
-  algorithms}
+    \field{title}{Elements of causal inference: foundations and learning algorithms}
     \list{location}{1}{%
       {Cambridge, Mass}%
     }
@@ -874,8 +724,7 @@
     \field{labelalpha}{Tem+24}
     \field{sortinit}{T}
     \field{sortinithash}{T}
-    \field{title}{Scaling Monosemanticity: Extracting Interpretable Features
-  from Claude 3 Sonnet}
+    \field{title}{Scaling Monosemanticity: Extracting Interpretable Features from Claude 3 Sonnet}
     \verb{url}
     \verb https://transformer-circuits.pub/2024/scaling-monosemanticity/index.h
     \verb tml
@@ -931,21 +780,7 @@
     \field{sortinit}{T}
     \field{sortinithash}{T}
     \field{abstract}{%
-    Abstract Learning the causal relationships that define a molecular system
-  allows us to predict how the system will respond to different interventions.
-  Distinguishing causality from mere association typically requires randomized
-  experiments. Methods for automated  causal discovery from limited
-  experiments exist, but have so far rarely been tested in systems biology
-  applications. In this work, we apply state-of-the art causal discovery
-  methods on a large collection of public mass cytometry data sets, measuring
-  intra-cellular signaling proteins of the human immune system and their
-  response to several perturbations. We show how different experimental
-  conditions can be used to facilitate causal discovery, and apply two
-  fundamental methods that produce context-specific causal predictions. Causal
-  predictions were reproducible across independent data sets from two different
-  studies, but often disagree with the {KEGG} pathway databases. Within this
-  context, we discuss the caveats we need to overcome for automated causal
-  discovery to become a part of the routine data analysis in systems biology.%
+    Abstract Learning the causal relationships that define a molecular system allows us to predict how the system will respond to different interventions. Distinguishing causality from mere association typically requires randomized experiments. Methods for automated  causal discovery from limited experiments exist, but have so far rarely been tested in systems biology applications. In this work, we apply state-of-the art causal discovery methods on a large collection of public mass cytometry data sets, measuring intra-cellular signaling proteins of the human immune system and their response to several perturbations. We show how different experimental conditions can be used to facilitate causal discovery, and apply two fundamental methods that produce context-specific causal predictions. Causal predictions were reproducible across independent data sets from two different studies, but often disagree with the {KEGG} pathway databases. Within this context, we discuss the caveats we need to overcome for automated causal discovery to become a part of the routine data analysis in systems biology.%
     }
     \verb{doi}
     \verb 10.1038/s41598-017-08582-x
@@ -955,9 +790,7 @@
     \field{pages}{12724}
     \field{shortjournal}{Sci Rep}
     \field{shorttitle}{Predicting Causal Relationships from Biological Data}
-    \field{title}{Predicting Causal Relationships from Biological Data:
-  Applying Automated Causal Discovery on Mass Cytometry Data of Human Immune
-  Cells}
+    \field{title}{Predicting Causal Relationships from Biological Data: Applying Automated Causal Discovery on Mass Cytometry Data of Human Immune Cells}
     \verb{url}
     \verb https://www.nature.com/articles/s41598-017-08582-x
     \endverb
@@ -1008,9 +841,7 @@
     \list{publisher}{1}{%
       {arXiv}%
     }
-    \keyw{Computer Science - Artificial Intelligence, Computer Science - Logic
-  in Computer Science, Computer Science - Machine Learning, Mathematics -
-  Category Theory}
+    \keyw{Computer Science - Artificial Intelligence, Computer Science - Logic in Computer Science, Computer Science - Machine Learning, Mathematics - Category Theory}
     \strng{namehash}{TS+2}
     \strng{fullhash}{TSLRCSKICB1}
     \field{labelnamesource}{author}
@@ -1019,32 +850,7 @@
     \field{sortinit}{T}
     \field{sortinithash}{T}
     \field{abstract}{%
-    Artificial intelligence (AI) is currently based largely on black-box
-  machine learning models which lack interpretability. The field of eXplainable
-  AI (XAI) strives to address this major concern, being critical in high-stakes
-  areas such as the finance, legal and health sectors. We present an approach
-  to defining AI models and their interpretability based on category theory.
-  For this we employ the notion of a compositional model, which sees a model in
-  terms of formal string diagrams which capture its abstract structure together
-  with its concrete implementation. This comprehensive view incorporates
-  deterministic, probabilistic and quantum models. We compare a wide range of
-  AI models as compositional models, including linear and rule-based models,
-  (recurrent) neural networks, transformers, VAEs, and causal and DisCoCirc
-  models. Next we give a definition of interpretation of a model in terms of
-  its compositional structure, demonstrating how to analyse the
-  interpretability of a model, and using this to clarify common themes in XAI.
-  We find that what makes the standard 'intrinsically interpretable' models so
-  transparent is brought out most clearly diagrammatically. This leads us to
-  the more general notion of compositionally-interpretable (CI) models, which
-  additionally include, for instance, causal, conceptual space, and DisCoCirc
-  models. We next demonstrate the explainability benefits of CI models.
-  Firstly, their compositional structure may allow the computation of other
-  quantities of interest, and may facilitate inference from the model to the
-  modelled phenomenon by matching its structure. Secondly, they allow for
-  diagrammatic explanations for their behaviour, based on influence
-  constraints, diagram surgery and rewrite explanations. Finally, we discuss
-  many future directions for the approach, raising the question of how to learn
-  such meaningfully structured models in practice.%
+    Artificial intelligence (AI) is currently based largely on black-box machine learning models which lack interpretability. The field of eXplainable AI (XAI) strives to address this major concern, being critical in high-stakes areas such as the finance, legal and health sectors. We present an approach to defining AI models and their interpretability based on category theory. For this we employ the notion of a compositional model, which sees a model in terms of formal string diagrams which capture its abstract structure together with its concrete implementation. This comprehensive view incorporates deterministic, probabilistic and quantum models. We compare a wide range of AI models as compositional models, including linear and rule-based models, (recurrent) neural networks, transformers, VAEs, and causal and DisCoCirc models. Next we give a definition of interpretation of a model in terms of its compositional structure, demonstrating how to analyse the interpretability of a model, and using this to clarify common themes in XAI. We find that what makes the standard 'intrinsically interpretable' models so transparent is brought out most clearly diagrammatically. This leads us to the more general notion of compositionally-interpretable (CI) models, which additionally include, for instance, causal, conceptual space, and DisCoCirc models. We next demonstrate the explainability benefits of CI models. Firstly, their compositional structure may allow the computation of other quantities of interest, and may facilitate inference from the model to the modelled phenomenon by matching its structure. Secondly, they allow for diagrammatic explanations for their behaviour, based on influence constraints, diagram surgery and rewrite explanations. Finally, we discuss many future directions for the approach, raising the question of how to learn such meaningfully structured models in practice.%
     }
     \verb{doi}
     \verb 10.48550/arXiv.2406.17583
