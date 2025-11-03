@@ -83,13 +83,13 @@
         \begin{align*}
             K_S(\omega_S, A\cap B) &= K_S(\omega_S, B)
         \end{align*}
-        (since ${\delta_{\omega_S}(A)=1}$). If ${A\cap B = \emptyset}$, then in particular ${\omega_S\notin \pi_S(B)}$ (since ${\omega_S\in A}$ by assumption). Thus, by the rephrased axiom, we have ${K_S(\omega_S, B) = 0 = }K_S(\omega_S, \emptyset)$. Assume ${A\cap B\neq \empty}$ and apply the rephrased axiom to this set noting that by construction ${\omega_S\in \pi_S(A\cap B)}$. 
+        (since ${\delta_{\omega_S}(A)=1}$). If ${A\cap B = \emptyset}$, then in particular ${\omega_S\notin \pi_S(B)}$ (since ${\omega_S\in A}$ by assumption). Thus, by the rephrased axiom, we have ${K_S(\omega_S, B) = 0 = }K_S(\omega_S, \emptyset)$. Assume ${A\cap B\neq \emptyset}$ and apply the rephrased axiom to this set. 
         \begin{align*}
             K_S(\omega_S, A\cap B)&= K_S(\omega_S, B\cap A \cap \{\omega_S\times \Omega_{T\setminus S}\})\\
             &\stackrel{\spadesuit}{=} K_S(\omega_S, B\cap \{\omega_S\times \Omega_{T\setminus S}\})\\
             &\stackrel{\diamondsuit}{=}K_S(\omega_S, B).
         \end{align*}
-        where ${(\spadesuit)}$ follows from the fact that ${A\cap \{\omega_S\times \Omega_{T\setminus S}\} = \{\omega_S\times \Omega_{T\setminus S}\}}$ (since ${\omega_S\in A}$) and ${(\diamondsuit)}$ follows from applying the rephrased axiom.\sid{The final step is more elgant if we use the definition of the axiom where we don't have the two cases (see my comment above). If we do have the two cases we just need to make a comment in the $\diamondsuit$ step that if the intersection is empty we get $0$ but this is OK since the interesection being empty means that $\omega_S\notin\pi_S(B)$ and so we get $K_S(\omega, B)$ eitherway}.  
+        where ${(\spadesuit)}$ follows from the fact that ${A\cap \{\omega_S\times \Omega_{T\setminus S}\} = \{\omega_S\times \Omega_{T\setminus S}\}}$ (since ${\omega_S\in A}$) and ${(\diamondsuit)}$ follows from applying the rephrased axiom.\sid{The final step is more elegant if we use the definition of the axiom where we don't have the two cases (see my comment above). If we do have the two cases we just need to make a comment in the $\diamondsuit$ step that if the intersection is empty we get $0$ but this is OK since the intersection being empty means that $\omega_S\notin\pi_S(B)$ and so we get $K_S(\omega, B)$ eitherway}.  
         On the other hand, if ${\omega_S\notin A}$, we need to show that
         \begin{align*}
             K_S(\omega_S, A\cap B) &= 0.
