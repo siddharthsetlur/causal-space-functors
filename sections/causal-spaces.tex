@@ -96,5 +96,21 @@
         \end{align*}
         Let ${\tilde{B} = A\cap B}$. We can assume without loss of generality that ${\tilde{B} = \emptyset}$, since there is nothing to show otherwise (by definition we have ${K_S(\omega_S, A\cap B)=0}$). Note that ${\omega_S\notin\pi(\tilde{B})}$, since ${\omega_S\notin A}$. So, applying the rephrased axiom to ${\tilde{B}}$, we get ${K_S(\omega_S, \tilde{B}) = 0}$ as desired. 
     \end{proof}
-    The takeaway here is that the interventional distribution of an event $B\in \mathcal{H}$ upon intervening on ${\omega\in\Omega_S}$ is completely determined by the intersection with events whose $\pi_S$-projection contains ${\omega_S}$ 
+    The takeaway here is that the interventional distribution of an event $B\in \mathcal{H}$ upon intervening on ${\omega\in\Omega_S}$ is completely determined by the intersection with events whose $\pi_S$-projection contains ${\omega_S}$. In particular any outcome ${\nu\in \Omega}$ with ${\nu_s\neq \omega_S}$ has probability $0$ in the interventional distribution ${K_S(\omega_S, \Omega)}$.
+    \begin{ex}[Two variable binary example (contd)]\label{ex:Two-variable-binary-example-(contd)}
+    Consider the causal space from \autoref{ex:Two-variable-binary-causal-space} again. Let ${B = \{(0,1),(1,1)\}}$ (i.e. the event $Y=1$). Computing $K_X(0,B)$ using the rephrased axiom we get 
+    \begin{align*}
+    K_X(0, B) &= K_X(0, B\cap \{(0,0),0,1\})\\
+              &= K_X(0, \{(0,1)\})
+    \end{align*}
+    Moreover, 
+    \begin{align*}
+    K_X(0, (1,1)) = 0
+    \end{align*}
+    since ${0\notin \{1\} = \pi_X(\{(1,1)\})}$. Intuitively, this is what one would expect: the interventional distribution fixes the variable that we intervened upon. 
+    \end{ex}
+    \begin{cor}[Kernels between variables]\label{cor:Kernels-between-variables}
+    
+    \end{cor}
+         
 \end{document}
