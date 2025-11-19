@@ -107,10 +107,16 @@
     \begin{align*}
     K_X(0, (1,1)) = 0
     \end{align*}
-    since ${0\notin \{1\} = \pi_X(\{(1,1)\})}$. Intuitively, this is what one would expect: the interventional distribution fixes the variable that we intervened upon. 
+    since ${0\notin \{1\} = \pi_X(\{(1,1)\})}$. Intuitively, this is what one would expect: the interventional distribution fixes the variable that we intervened upon. This result also allows us to define Markov kernels between variables ${X}$ and ${Y}$, as one often does in other frameworks of causal inference including structural causal models and string diagrams.  
     \end{ex}
     \begin{cor}[Kernels between variables]\label{cor:Kernels-between-variables}
+    Let ${\mathfrak{C} = (\times_{t\in T}\Omega_t, \otimes_{t\in T}\mathcal{E}_t, \mathbb{P}, \mathbb{K})}$ be a causal space and ${X,Y\in T}$ be distinct variables. Then, 
+    \begin{align*}
+    K_{X\to Y}: \Omega_X\times \mathcal{H}_Y &\to [0,1]\\
+                (\omega_X, A)&\mapsto K_X(\omega_X, \times_{i\in T\setminus \{X, Y\}}\Omega_i\times \{\omega_X\}\times \pi_y(A))
+    \end{align*}
     
     \end{cor}
-         
+    
+    
 \end{document}
