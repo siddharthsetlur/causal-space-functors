@@ -109,14 +109,71 @@
     \end{align*}
     since ${0\notin \{1\} = \pi_X(\{(1,1)\})}$. Intuitively, this is what one would expect: the interventional distribution fixes the variable that we intervened upon. This result also allows us to define Markov kernels between variables ${X}$ and ${Y}$, as one often does in other frameworks of causal inference including structural causal models and string diagrams.  
     \end{ex}
+    \begin{pro}[Kernels between subsets of variables]
+    \label{pro:Kernels-between-subsets-of-variables}
+    Let ${\mathfrak{C} = (\prod_{t\in T}\Omega_t, \otimes_{t\in T}\mathcal{E}_t, \mathbb{P}, \mathbb{K})}$ be a causal space and ${U, V\in 2^T}$ be be disjoint subsets of vriables. Then,
+    \begin{align*}
+        K_{U\to V}: \Omega_U\times \mathcal{H}_V &\to [0,1]\\
+                (\omega_U, A)&\mapsto K_X(\omega_U, \prod_{i\in T\setminus \{U\cup V\}}\Omega_i\times \{\omega_U\}\times A_V)
+    \end{align*}
+    where ${A_V}$ denotes the projection ${\pi_V(A)}$ is a Markov Kernel that satisfies 
+    \begin{enumerate}
+        \item ${K_{U\to V}(\omega_U, A) = K_U(\omega_X, A)\foralll A \in \mathcal{H}_V}$ (compatibility with the original causal mechanism);
+        \item ${K_{U\to W}(\omega_X, A) = K_{V\to W}\circ K_{U\to V}(\omega_X, A)\foralll A\in \mathcal{H}_Z}$ (compositionality).
+    \end{enumerate}
+    \end{pro}
+    \begin{proof}
+        Proving property $1$ is a direct application of \autoref{lem:Rephrasing-axiom-2}. Indeed, observe that ${A\in \mathcal{H}_V}$ is of the form ${\prod_{i\in \{T\setminus V\}}\Omega_i\times A_V}$. Since ${U\cap V=\emptyset}$, ${\pi_U(A) = \Omega_U\ni \omega_U}$. So, by \autoref{lem:Rephrasing-axiom-2},
+        \begin{align*}
+            K_U(\omega_U, A) &= K_U(\omega_U, A\cap \{\Omega_{T\setminus U}\times \omega_U\})\\
+            &= K_U(\omega_U, \{\prod_{i\in \{T\setminus V\}}\Omega_i\times A_V\}\cap \{\Omega_{T\setminus U}\times \omega_U\})\\
+            &= K_U(\omega_U, \{\prod_{i\in \{T\setminus U\cup V\}}\Omega_i\times A_V\times \omega_U\})\\
+            &= K_{U\to V}(\omega_U, A). 
+        \end{align*}
+        This also proves that ${K_{U\to V}}$ is a Markov kernel, since $K_U$ is a Markov kernel. For every fixed ${A_0\in \mathcal{H}_V}$, the map ${\omega_U\mapsto K_{U\to V}(\omega_U, A) = K_{U\to V}(\omega_U, A) }$ is measurable since ${K_U}$ is measurable. For every fixed ${\omega_U\in\Omega_U}$, the map ${A\mapsto K_{U\to V}(\omega_U, A) = K_U(\omega_U, A)}$ is a measure since ${K_U}$ is a measure and it is a probability measure since 
+        \begin{align*}
+            K_{U\to V}(\omega_U, \Omega_V) &= K_U(\omega_U, \prod_{i\in T\setminus \{U\cup V\}}\Omega_i\times \{\omega_U\}\times \Omega_V)\\
+            &= K_U(\omega_U, \omega_{T\setminus U}\times \omega_U)\\
+            &\stackrel{\spadesuit}{=} 1.
+        \end{align*} 
+        where ${(\spadesuit)}$ is due to the fact that ${K_U(\omega_U, B)}$ is $0$ outside of the set of events ${B}$ whose projection onto ${\Omega_U}$ contains ${\omega_U}$ (by \autoref{lem:Rephrasing-axiom-2}). 
+    \end{proof}
+    It's worth spelling out what this boils down to when the sets are single variables. 
     \begin{cor}[Kernels between variables]\label{cor:Kernels-between-variables}
-    Let ${\mathfrak{C} = (\times_{t\in T}\Omega_t, \otimes_{t\in T}\mathcal{E}_t, \mathbb{P}, \mathbb{K})}$ be a causal space and ${X,Y\in T}$ be distinct variables. Then, 
+    Let ${\mathfrak{C} = (\prod_{t\in T}\Omega_t, \otimes_{t\in T}\mathcal{E}_t, \mathbb{P}, \mathbb{K})}$ be a causal space and ${X,Y\in T}$ be distinct variables. Then, 
     \begin{align*}
     K_{X\to Y}: \Omega_X\times \mathcal{H}_Y &\to [0,1]\\
-                (\omega_X, A)&\mapsto K_X(\omega_X, \times_{i\in T\setminus \{X, Y\}}\Omega_i\times \{\omega_X\}\times \pi_y(A))
+                (\omega_X, A)&\mapsto K_X(\omega_X, \prod_{i\in T\setminus \{X, Y\}}\Omega_i\times \{\omega_X\}\times A_Y)
     \end{align*}
-    
+    where ${A_Y}$ denotes the projection ${\pi_Y(A)}$ is a Markov Kernel that satisfies 
+    \begin{enumerate}
+        \item ${K_{X\to Y}(\omega_X, A) = K_X(\omega_X, A)\foralll A \in \mathcal{H}_Y}$ (compatibility with the original causal mechanism);
+        \item ${K_{X\to Z}(\omega_X, A_Z) = K_{Y\to Z}\circ K_{X\to Y}(\omega_X, A)\foralll A\in \mathcal{H}_Z}$ (compositionality).
+    \end{enumerate}
     \end{cor}
-    
-    
+    \begin{ex}[Kerneles between variables in the two binary variable case]
+    \label{ex:Kerneles-between-variables-in-the-two-binary-variable-case}
+        Consider the causal space from \autoref{ex:Two-variable-binary-causal-space}. We can use \autoref{cor:Kernels-between-variables} to compute
+        \begin{align*}
+            K_{X\to Y}(\omega_X, A) &=  K_X(\omega_X, \omega_X\times A_Y)\\
+                                    &=  \begin{pmatrix}
+                                        K_X(0, \{(0,0)\}) & K_X(1, \{(1,0)\})\\
+                                        K_X(0, \{(0,1)\}) & K_X(1, \{(1,1)\})
+                                    \end{pmatrix}             
+        \end{align*}
+        where ${A\in \mathcal{H_Y}}$ is arbitrary. 
+    \end{ex}
+    % \begin{proof}
+    %     Proving property $1$ also shows that ${K_{X\to Y}}$ is a Markov kernel, since ${K_X}$ is a Markov kernel. Property $1$ is a direct application of \autoref{lem:Rephrasing-axiom-2}. Indeed, let ${\omega_X\in \Omega_X}$ and ${A\in \mathcal{H}_Y}$ be arbitrary. Since ${A\in \mathcal{H}_Y}$ it is of the form ${\prod_{i\in \{T\setminus Y\}}\times A_Y}$ and so ${\omega_x\in \pi_X(A) = \Omega_X}$. Moreover 
+    %     \begin{align*}
+    %         A \cap \{\Omega_{T\setminus \{X\}}\times \omega_X\}  &= \{\prod_{i\in \{T\setminus Y\}}\Omega_i\times A_Y\} \cap \{\prod_{i\in \{T\setminus X\}}\Omega_i \times \omega_X\}\\
+    %         &= \prod_{i\in T\setminus \{X,Y\}}\Omega_i \times A_Y \times \{\omega_X\}.
+    %     \end{align*}
+    %     By \autoref{lem:Rephrasing-axiom-2}, we have 
+    %     \begin{align*}
+    %         K_X(\omega, A) &= K_X(\omega_X, A \cap \{\Omega_{T\setminus \{X\}}\times \omega_X\})\\
+    %                         &= K_X(\omega_X, \prod_{i\in T\setminus \{X,Y\}}\Omega_i \times A_Y \times \{\omega_X\})\\
+    %                         &= K_{X\to Y}(\omega_X, A).
+    %     \end{align*}
+    % \end{proof}
 \end{document}
