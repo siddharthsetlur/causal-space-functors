@@ -57,45 +57,196 @@
         \end{align*}
         This yields the block structure above since ${K_X(0,B)=0}$ and ${K_X(1,A)=0}$ while the other two entries are non-zero and must sum to $1$. Intuitively, ${K_S(0,A)}$ is the probability distribution on ${A}$ after intervening by setting $X=0$. If ${A}$ does not contain an event where ${X=0}$, then the intervention makes ${A}$ impossible, hence the probability is $0$. Conversely, if $A$ contains all the events where $X=0$, then after intervening to set $X=0$, the probability of $A$ is $1$.
     \end{ex}
+
     \begin{lem}[Rephrasing axiom 2]
     \label{lem:Rephrasing-axiom-2}
-        Axiom 2 of \autoref{defn:Causal-Space}  can be rephrased as follows: for all ${\omega_S\in\Omega_S}$ and ${B\in \mathcal{H}}$:
+        Axiom 2 of \autoref{defn:Causal-Space} can be rephrased as follows: for all ${\omega_S\in \Omega_S}$ and ${B\in \mathcal{H}}$:
         \begin{align*}
-            K_S(\omega_S, B) &=\begin{cases}
-                 0 & \text{if } \omega_S\notin \pi_S(B)\\
-                 K_S(\omega_{S}, B\cap \{\Omega_{T\setminus S}\times \omega_S\}) & \text{if } \omega_S\in \pi_S(B).
-            \end{cases}
+            K_S(\omega_S, B) &= K_S(\omega_S, B\cap \pi^{-1}_S(\omega_S))
         \end{align*}
-        where ${\pi_S(B)}$ denotes the projection of ${B}$ onto ${\Omega_S}$ \sid{I think we only need case $2$. If $\omega_S\notin \pi_S(B)$, then $B\cap \{\Omega_{T\setminus S}\times \omega_S\}=\emptyset$ and so $K_S(\omega_{S}, B\cap \{\Omega_{T\setminus S}\times \omega_S\})=0$ anyway.}
+        where ${\pi_S:\Omega\to\Omega_S}$ denotes the projection. 
     \end{lem}
     \begin{proof}
-        We first show that axiom 2 implies the statement above. Let ${\omega_S\in\Omega_S}$ and ${B\in \mathcal{H}}$ be arbitrary. Suppose ${\omega_S\notin \pi_S(B)}$ and set ${A = \{\omega_S\}\times \Omega_{T\setminus S}\in \mathcal{H}_S}$. Applying axiom 2, we get 
+        We first show that axiom 2 implies the statement above. Let ${\omega_S\in\Omega_S}$ and ${B\in \mathcal{H}}$ be arbitrary. Setting ${A = \pi_S^{-1}(\omega_S) \in \mathcal{H}_S}$ and applying axiom 2, we get 
         \begin{align*}
-              K_S(\omega_S, A\cap B) &= \delta_{\omega_S}(A)K_S(\omega_S, B).
+              K_S(\omega_S, A\cap B) &= \delta_{\omega_S}(A)K_S(\omega_S, B)\\
+                                    &\stackrel{\omega_S\in A}{=}K_S(\omega_S, B)
         \end{align*}
-        Due to ${\omega_S\notin \pi_S(B)}$, we have ${A\cap B = \emptyset}$  and consequently ${K_S(\omega_S, A\cap B) = 0 }$. On the right hand side, we have ${\delta_{\omega_S}(A) = 1}$ since ${\omega_S\in A}$. Thus, we conclude that ${K_S(\omega_S, B) = 0}$.
-
-        Suppose now that ${\omega_S\in \pi_S(B)}$ and set ${A = \{\omega_S\}\times \Omega_{T\setminus S}\in \mathcal{H}_S}$. Applying axiom 2 again, we get
+        as desired. Note that ${\omega_S\in A}$ by construction since 
         \begin{align*}
-            K_S(\omega_S, A\cap B) &= \delta_{\omega_S}(A)K_S(\omega_S, B) = K_S(\omega_S, B).
+            A = \pi_S^{-1}(\omega_S) = \{\omega\in \Omega: \pi_s(\omega)=\omega_S\}=\{\omega_S\}\times \Omega_{T\setminus S}\in \mathcal{H}_S.
         \end{align*}
-        Conversely, suppose the statement above holds and let ${\omega_S\in \Omega_S}$, ${A\in \mathcal{H}_S}$, and ${B\in \mathcal{H}}$ be arbitrary. We have two cases to consider. First, consider the case where ${\omega_S\in A}$. We need to use the rephrased axiom to show 
-        \begin{align*}
-            K_S(\omega_S, A\cap B) &= K_S(\omega_S, B)
-        \end{align*}
-        (since ${\delta_{\omega_S}(A)=1}$). If ${A\cap B = \emptyset}$, then in particular ${\omega_S\notin \pi_S(B)}$ (since ${\omega_S\in A}$ by assumption). Thus, by the rephrased axiom, we have ${K_S(\omega_S, B) = 0 = }K_S(\omega_S, \emptyset)$. Assume ${A\cap B\neq \emptyset}$ and apply the rephrased axiom to this set. 
+        Note that if ${\omega_S\notin\pi_S(B)}$, then ${A\cap B=\emptyset}$ forcing ${K_S(\omega_S,A\cap B)=0}$. 
         \begin{align*}
             K_S(\omega_S, A\cap B)&= K_S(\omega_S, B\cap A \cap \{\omega_S\times \Omega_{T\setminus S}\})\\
             &\stackrel{\spadesuit}{=} K_S(\omega_S, B\cap \{\omega_S\times \Omega_{T\setminus S}\})\\
             &\stackrel{\diamondsuit}{=}K_S(\omega_S, B).
         \end{align*}
-        where ${(\spadesuit)}$ follows from the fact that ${A\cap \{\omega_S\times \Omega_{T\setminus S}\} = \{\omega_S\times \Omega_{T\setminus S}\}}$ (since ${\omega_S\in A}$) and ${(\diamondsuit)}$ follows from applying the rephrased axiom.\sid{The final step is more elegant if we use the definition of the axiom where we don't have the two cases (see my comment above). If we do have the two cases we just need to make a comment in the $\diamondsuit$ step that if the intersection is empty we get $0$ but this is OK since the intersection being empty means that $\omega_S\notin\pi_S(B)$ and so we get $K_S(\omega, B)$ eitherway}.  
-        On the other hand, if ${\omega_S\notin A}$, we need to show that
+        where ${(\spadesuit)}$ follows from the fact that ${A\cap \{\omega_S\times \Omega_{T\setminus S}\} = \{\omega_S\times \Omega_{T\setminus S}\}}$ (since ${\omega_S\in A}$) and ${(\diamondsuit)}$ follows from applying the rephrased axiom.
+        Conversely, suppose the rephrased statement above holds and let ${\omega_S\in \Omega_S}$, ${A\in \mathcal{H}_S}$, and ${B\in \mathcal{H}}$ be arbitrary. We need to use the rephrased axiom to show 
         \begin{align*}
-            K_S(\omega_S, A\cap B) &= 0.
+            K_S(\omega_S, A\cap B) &= \delta_{\omega_S}(A)K_S(\omega_S, B).
         \end{align*}
-        Let ${\tilde{B} = A\cap B}$. We can assume without loss of generality that ${\tilde{B} = \emptyset}$, since there is nothing to show otherwise (by definition we have ${K_S(\omega_S, A\cap B)=0}$). Note that ${\omega_S\notin\pi(\tilde{B})}$, since ${\omega_S\notin A}$. So, applying the rephrased axiom to ${\tilde{B}}$, we get ${K_S(\omega_S, \tilde{B}) = 0}$ as desired. 
+        Applying the rephrased axiom to ${A\cap B}$ we get
+        \begin{align*}
+            K_S(\omega_S, A\cap B) &= K_S(\omega_S, A\cap B \cap \pi^{-1}_S(\omega_S))
+        \end{align*}. 
+        If ${\omega_S\notin A}$, then ${A\cap B = \emptyset}$ and there is nothing to show since we get ${0}$ using either method. if ${\omega_S\in A}$, then ${A\cap \pi_S^{-1}(\omega_S)=\pi_S^{-1}(\omega_S)}$ and hence 
+        \begin{align*}
+            K_S(\omega_S, A\cap B) &= K_S(\omega_S, B \cap \pi^{-1}_S(\omega_S))\\
+            &\stackrel{\diamondsuit}{=}K_S(\omega_S, B)\\
+            &= \underbrace{\delta_{\omega_S}(A)}_{=1}K_S(\omega_S, B)
+        \end{align*}
+        where ${\diamondsuit}$ follows fro applying the rephrased axiom again, but this time to ${K_S(\omega_S, B)}$. 
     \end{proof}
+    \sid{See the alternate notation and proof (the one i originnally had) commented out below for clarity.}
+    \begin{figure}
+        \centering
+        \begin{subfigure}{0.45\linewidth}
+        \centering
+        \begin{tikzpicture}[scale=1.0]
+            % Coordinate axes
+            \draw[thick, blue!70!black] (-1.5,0) -- (5.5,0);
+            \draw[thick, blue!70!black] (0,-0.5) -- (0,5);
+            
+            % Define key coordinates
+            \def\Aleft{0.75}
+            \def\Aright{1.05}
+            \def\Acenter{0.9}
+            \def\Btop{3.0}
+            \def\Bbot{1.2}
+            
+            % Set C (green blob) - passes through A at EXACTLY y=Bbot and y=Btop
+            % Enters A from left at y=Bbot and y=Btop, exits right, then bulges out
+            \fill[magenta!25]
+                % Start at left edge of A, bottom of intersection
+                (\Aleft, \Bbot)
+                % Go left and curve around (small bulge, stays right of y-axis)
+                .. controls (0.5, 1.0) and (0.2, 1.5) .. (0.15, 2.1)
+                % Curve back up to left edge of A at top of intersection
+                .. controls (0.2, 2.7) and (0.5, 3.2) .. (\Aleft, \Btop)
+                % Now go right, through A, and out the other side
+                -- (\Aright, \Btop)
+                % Bulge out to the right
+                .. controls (2.0, 3.8) and (4.0, 3.5) .. (5.0, 2.8)
+                .. controls (5.8, 2.2) and (5.8, 1.8) .. (5.0, 1.4)
+                .. controls (4.0, 0.8) and (2.0, 0.6) .. (\Aright, \Bbot)
+                % Back to start
+                -- (\Aleft, \Bbot);
+            \draw[thick, green!50!black]
+                (\Aleft, \Bbot)
+                .. controls (0.5, 1.0) and (0.2, 1.5) .. (0.15, 2.1)
+                .. controls (0.2, 2.7) and (0.5, 3.2) .. (\Aleft, \Btop)
+                -- (\Aright, \Btop)
+                .. controls (2.0, 3.8) and (4.0, 3.5) .. (5.0, 2.8)
+                .. controls (5.8, 2.2) and (5.8, 1.8) .. (5.0, 1.4)
+                .. controls (4.0, 0.8) and (2.0, 0.6) .. (\Aright, \Bbot)
+                -- (\Aleft, \Bbot);
+            \node[green!50!black, font=\large\bfseries] at (5.0, 2.1) {$C$};
+            
+            % Set B: red rectangle - same as v3
+            \fill[red!25] (\Aleft,\Bbot) rectangle (4.5,\Btop);
+            \draw[thick, red!70!black] (\Aleft,\Bbot) rectangle (4.5,\Btop);
+            \node[red!70!black, font=\large\bfseries] at (3.2,2.1) {$B$};
+            
+            % Set A: thin vertical strip centered on omega_s - same as v3
+            \fill[green!40, opacity=0.5] (\Aleft,0) rectangle (\Aright,4.5);
+            \draw[pattern=north east lines, pattern color=green!70!black] 
+                (\Aleft,0) rectangle (\Aright,4.5);
+            \draw[thick, green!70!black] (\Aleft,0) -- (\Aleft,4.5) (\Aright,0) -- (\Aright,4.5);
+            \node[green!50!black, font=\large\bfseries] at (\Acenter,4.8) {$A$};
+            
+            % Intersection A ∩ B = A ∩ C
+            \fill[orange, opacity=0.9] (\Aleft,\Bbot) rectangle (\Aright,\Btop);
+            \draw[pattern=crosshatch, pattern color=orange!90!black] 
+                (\Aleft,\Bbot) rectangle (\Aright,\Btop);
+            \draw[very thick, orange!80!black] (\Aleft,\Bbot) rectangle (\Aright,\Btop);
+            
+            % Label showing A ∩ B = A ∩ C
+            \node[orange!70!black, font=\small\bfseries, align=center] 
+                at (-1.2,2.1) {$A \cap B$\\$=$\\$A \cap C$};
+            \draw[->, orange!70!black, thick] (-0.6,2.1) -- (0.65,2.1);
+            
+            % Point omega_s on axis (centered in A)
+            \fill[blue!70!black] (\Acenter,0) circle (2.5pt);
+            \node[blue!70!black, font=\bfseries, below] at (\Acenter,-0.15) {$\omega_s$};
+        \end{tikzpicture}
+        \caption{$K_S(\omega_S,B) = K_S(\omega_S,\pi_S^{-1}(\omega_S)\cap B) = K_S(\omega_S,\pi_S^{-1}(\omega_S)\cap C)= K_S(\omega_S, C)$}
+        \end{subfigure}
+        \hspace{0.8cm}
+        \begin{subfigure}{0.45\linewidth}
+        \centering
+        \begin{tikzpicture}[scale=1.0]
+            % Coordinate axes
+            \draw[thick, blue!70!black] (-0.5,0) -- (6,0);
+            \draw[thick, blue!70!black] (0,-0.5) -- (0,5);
+
+            % Define key coordinates
+            \def\Aleft{0.75}
+            \def\Aright{1.05}
+            \def\Acenter{0.9}
+
+            % Set A: thin vertical strip centered on omega_s
+            \fill[green!40, opacity=0.5] (\Aleft,0) rectangle (\Aright,4.5);
+            \draw[pattern=north east lines, pattern color=green!70!black]
+                  (\Aleft,0) rectangle (\Aright,4.5);
+            \draw[thick, green!70!black] (\Aleft,0) -- (\Aleft,4.5) (\Aright,0) -- (\Aright,4.5);
+            \node[green!50!black, font=\large\bfseries] at (\Acenter,4.8) {$A$};
+
+            % Set B: red rectangle (no intersection with A)
+            \fill[red!25] (2.0,1.0) rectangle (5.5,3.2);
+            \draw[thick, red!70!black] (2.0,1.0) rectangle (5.5,3.2);
+            \node[red!70!black, font=\large\bfseries] at (3.75,2.1) {$B$};
+
+            % Point omega_s on axis (centered in A)
+            \fill[blue!70!black] (\Acenter,0) circle (2.5pt);
+            \node[blue!70!black, font=\bfseries, below] at (\Acenter,-0.15) {$\omega_s$};
+        \end{tikzpicture}
+        \caption{$K_S(\omega_S,B) = K_S(\omega_S,\pi_S^{-1}(\omega_S)\cap B)=K_S(\omega_S,\emptyset)=0$}
+        \end{subfigure}
+        \caption{\autoref{lem:Rephrasing-axiom-2} illustrated with the horizontal axis is ${\Omega_S}$.}
+    \end{figure}
+% **************************
+%     \begin{lem}[Rephrasing axiom 2]
+%     \label{lem:Rephrasing-axiom-2}
+%         Axiom 2 of \autoref{defn:Causal-Space}  can be rephrased as follows: for all ${\omega_S\in\Omega_S}$ and ${B\in \mathcal{H}}$:
+%         \begin{align*}
+%             K_S(\omega_S, B) &=\begin{cases}
+%                  0 & \text{if } \omega_S\notin \pi_S(B)\\
+%                  K_S(\omega_{S}, B\cap \{\Omega_{T\setminus S}\times \omega_S\}) & \text{if } \omega_S\in \pi_S(B).
+%             \end{cases}
+%         \end{align*}
+%         where ${\pi_S(B)}$ denotes the projection of ${B}$ onto ${\Omega_S}$ \sid{I think we only need case $2$. If $\omega_S\notin \pi_S(B)$, then $B\cap \{\Omega_{T\setminus S}\times \omega_S\}=\emptyset$ and so $K_S(\omega_{S}, B\cap \{\Omega_{T\setminus S}\times \omega_S\})=0$ anyway.}
+%     \end{lem}
+%     \begin{proof}
+%         We first show that axiom 2 implies the statement above. Let ${\omega_S\in\Omega_S}$ and ${B\in \mathcal{H}}$ be arbitrary. Suppose ${\omega_S\notin \pi_S(B)}$ and set ${A = \{\omega_S\}\times \Omega_{T\setminus S}\in \mathcal{H}_S}$. Applying axiom 2, we get 
+%         \begin{align*}
+%               K_S(\omega_S, A\cap B) &= \delta_{\omega_S}(A)K_S(\omega_S, B).
+%         \end{align*}
+%         Due to ${\omega_S\notin \pi_S(B)}$, we have ${A\cap B = \emptyset}$  and consequently ${K_S(\omega_S, A\cap B) = 0 }$. On the right hand side, we have ${\delta_{\omega_S}(A) = 1}$ since ${\omega_S\in A}$. Thus, we conclude that ${K_S(\omega_S, B) = 0}$.
+
+%         Suppose now that ${\omega_S\in \pi_S(B)}$ and set ${A = \{\omega_S\}\times \Omega_{T\setminus S}\in \mathcal{H}_S}$. Applying axiom 2 again, we get
+%         \begin{align*}
+%             K_S(\omega_S, A\cap B) &= \delta_{\omega_S}(A)K_S(\omega_S, B) = K_S(\omega_S, B).
+%         \end{align*}
+%         Conversely, suppose the statement above holds and let ${\omega_S\in \Omega_S}$, ${A\in \mathcal{H}_S}$, and ${B\in \mathcal{H}}$ be arbitrary. We have two cases to consider. First, consider the case where ${\omega_S\in A}$. We need to use the rephrased axiom to show 
+%         \begin{align*}
+%             K_S(\omega_S, A\cap B) &= K_S(\omega_S, B)
+%         \end{align*}
+%         (since ${\delta_{\omega_S}(A)=1}$). If ${A\cap B = \emptyset}$, then in particular ${\omega_S\notin \pi_S(B)}$ (since ${\omega_S\in A}$ by assumption). Thus, by the rephrased axiom, we have ${K_S(\omega_S, B) = 0 = }K_S(\omega_S, \emptyset)$. Assume ${A\cap B\neq \emptyset}$ and apply the rephrased axiom to this set. 
+%         \begin{align*}
+%             K_S(\omega_S, A\cap B)&= K_S(\omega_S, B\cap A \cap \{\omega_S\times \Omega_{T\setminus S}\})\\
+%             &\stackrel{\spadesuit}{=} K_S(\omega_S, B\cap \{\omega_S\times \Omega_{T\setminus S}\})\\
+%             &\stackrel{\diamondsuit}{=}K_S(\omega_S, B).
+%         \end{align*}
+%         where ${(\spadesuit)}$ follows from the fact that ${A\cap \{\omega_S\times \Omega_{T\setminus S}\} = \{\omega_S\times \Omega_{T\setminus S}\}}$ (since ${\omega_S\in A}$) and ${(\diamondsuit)}$ follows from applying the rephrased axiom.\sid{The final step is more elegant if we use the definition of the axiom where we don't have the two cases (see my comment above). If we do have the two cases we just need to make a comment in the $\diamondsuit$ step that if the intersection is empty we get $0$ but this is OK since the intersection being empty means that $\omega_S\notin\pi_S(B)$ and so we get $K_S(\omega, B)$ eitherway}.  
+%         On the other hand, if ${\omega_S\notin A}$, we need to show that
+%         \begin{align*}
+%             K_S(\omega_S, A\cap B) &= 0.
+%         \end{align*}
+%         Let ${\tilde{B} = A\cap B}$. We can assume without loss of generality that ${\tilde{B} = \emptyset}$, since there is nothing to show otherwise (by definition we have ${K_S(\omega_S, A\cap B)=0}$). Note that ${\omega_S\notin\pi(\tilde{B})}$, since ${\omega_S\notin A}$. So, applying the rephrased axiom to ${\tilde{B}}$, we get ${K_S(\omega_S, \tilde{B}) = 0}$ as desired. 
+%     \end{proof}
+%     *********************************************
     The takeaway here is that the interventional distribution of an event $B\in \mathcal{H}$ upon intervening on ${\omega\in\Omega_S}$ is completely determined by the intersection with events whose $\pi_S$-projection contains ${\omega_S}$. In particular any outcome ${\nu\in \Omega}$ with ${\nu_s\neq \omega_S}$ has probability $0$ in the interventional distribution ${K_S(\omega_S, \Omega)}$.
     \begin{ex}[Two variable binary example (contd)]\label{ex:Two-variable-binary-example-(contd)}
     Consider the causal space from \autoref{ex:Two-variable-binary-causal-space} again. Let ${B = \{(0,1),(1,1)\}}$ (i.e. the event $Y=1$). Computing $K_X(0,B)$ using the rephrased axiom we get 
@@ -109,35 +260,41 @@
     \end{align*}
     since ${0\notin \{1\} = \pi_X(\{(1,1)\})}$. Intuitively, this is what one would expect: the interventional distribution fixes the variable that we intervened upon. This result also allows us to define Markov kernels between variables ${X}$ and ${Y}$, as one often does in other frameworks of causal inference including structural causal models and string diagrams.  
     \end{ex}
+
     \begin{pro}[Kernels between subsets of variables]
     \label{pro:Kernels-between-subsets-of-variables}
     Let ${\mathfrak{C} = (\prod_{t\in T}\Omega_t, \otimes_{t\in T}\mathcal{E}_t, \mathbb{P}, \mathbb{K})}$ be a causal space and ${U, V\in 2^T}$ be be disjoint subsets of vriables. Then,
     \begin{align*}
         K_{U\to V}: \Omega_U\times \mathcal{H}_V &\to [0,1]\\
-                (\omega_U, A)&\mapsto K_U(\omega_U, \prod_{i\in T\setminus \{U\cup V\}}\Omega_i\times \{\omega_U\}\times A_V)
+                (\omega_U, A)&\mapsto K_U(\omega_U, \pi^{-1}_{U\cup V}(\omega_S\times A_V) )
     \end{align*}
-    where ${A_V}$ denotes the projection ${\pi_V(A)}$ is a Markov Kernel that satisfies 
+    % where ${A_V}$ denotes the projection ${\pi_V(A)}$ 
+    is a Markov Kernel that satisfies 
     \begin{enumerate}
         \item ${K_{U\to V}(\omega_U, A) = K_U(\omega_X, A)\foralll A \in \mathcal{H}_V}$ (compatibility with the original causal mechanism);
         \item ${K_{U\to W}(\omega_X, A) = K_{V\to W}\circ K_{U\to V}(\omega_X, A)\foralll A\in \mathcal{H}_Z}$ (compositionality).
     \end{enumerate}
     \end{pro}
     \begin{proof}
-        Proving property $1$ is a direct application of \autoref{lem:Rephrasing-axiom-2}. Indeed, observe that ${A\in \mathcal{H}_V}$ is of the form ${\prod_{i\in \{T\setminus V\}}\Omega_i\times A_V}$. Since ${U\cap V=\emptyset}$, ${\pi_U(A) = \Omega_U\ni \omega_U}$. So, by \autoref{lem:Rephrasing-axiom-2},
+        Proving property $1$ is a direct application of \autoref{lem:Rephrasing-axiom-2}. Indeed, observe that ${A\in \mathcal{H}_V}$ is of the form ${\prod_{i\in \{T\setminus V\}}\Omega_i\times A_V}$ and hence can be written as ${\pi_V^{-1}(A_V)}$. Also note that \newline${\pi^{-1}_{U\cup V}(\omega_S\times A_V)={\prod_{i\in T\setminus \{U\cup V\}}\Omega_i\times \{\omega_U\}\times A_V}}$ So, by \autoref{lem:Rephrasing-axiom-2},
         \begin{align*}
-            K_U(\omega_U, A) &= K_U(\omega_U, A\cap \{\Omega_{T\setminus U}\times \omega_U\})\\
-            &= K_U(\omega_U, \{\prod_{i\in \{T\setminus V\}}\Omega_i\times A_V\}\cap \{\Omega_{T\setminus U}\times \omega_U\})\\
-            &= K_U(\omega_U, \{\prod_{i\in \{T\setminus U\cup V\}}\Omega_i\times A_V\times \omega_U\})\\
+            K_U(\omega_U, A) &= K_U(\omega_U, A\cap \pi^{-1}_U(\omega_U))\\
+            &= K_U(\omega_U, \pi^{-1}_V(A_V)\cap\pi^{-1}_U(\omega_U))\\
+            &\stackrel{U\cap V=\emptyset}{=} K_U(\omega_U, \pi^{-1}_{U\cup V}(\omega_S\times A_V))\\
             &= K_{U\to V}(\omega_U, A). 
         \end{align*}
         This also proves that ${K_{U\to V}}$ is a Markov kernel, since $K_U$ is a Markov kernel. For every fixed ${A_0\in \mathcal{H}_V}$, the map ${\omega_U\mapsto K_{U\to V}(\omega_U, A) = K_{U\to V}(\omega_U, A) }$ is measurable since ${K_U}$ is measurable. For every fixed ${\omega_U\in\Omega_U}$, the map ${A\mapsto K_{U\to V}(\omega_U, A) = K_U(\omega_U, A)}$ is a measure since ${K_U}$ is a measure and it is a probability measure since 
         \begin{align*}
-            K_{U\to V}(\omega_U, \Omega_V) &= K_U(\omega_U, \prod_{i\in T\setminus \{U\cup V\}}\Omega_i\times \{\omega_U\}\times \Omega_V)\\
-            &= K_U(\omega_U, \omega_{T\setminus U}\times \omega_U)\\
+            K_{U\to V}(\omega_U, \Omega_V) &= K_U(\omega_U, \pi^{-1}_{U\cup V}(\omega_S\times \Omega_V))\\
+            &= K_U(\omega_U, \pi^{-1}_U(\omega_U))\\
             &\stackrel{\spadesuit}{=} 1.
         \end{align*} 
-        where ${(\spadesuit)}$ is due to the fact that ${K_U(\omega_U, B)}$ is $0$ outside of the set of events ${B}$ whose projection onto ${\Omega_U}$ contains ${\omega_U}$ (by \autoref{lem:Rephrasing-axiom-2}). 
+        where ${(\spadesuit)}$ is due to the fact that ${K_U(\omega_U, B)}$ is a probability measure whose support is the set of events ${B}$ whose projection onto ${\Omega_U}$ contains ${\omega_U}$ (by \autoref{lem:Rephrasing-axiom-2}). 
+
+        TODO: compositionality
     \end{proof}
+
+
     \begin{rem}[Kernels between non-disjoint sets of variable]
     \label{rem:Kernels between non-disjoint sets of variables}
         
@@ -147,15 +304,16 @@
     Let ${\mathfrak{C} = (\prod_{t\in T}\Omega_t, \otimes_{t\in T}\mathcal{E}_t, \mathbb{P}, \mathbb{K})}$ be a causal space and ${X,Y\in T}$ be distinct variables. Then, 
     \begin{align*}
     K_{X\to Y}: \Omega_X\times \mathcal{H}_Y &\to [0,1]\\
-                (\omega_X, A)&\mapsto K_X(\omega_X, \prod_{i\in T\setminus \{X, Y\}}\Omega_i\times \{\omega_X\}\times A_Y)
+                (\omega_X, A)&\mapsto K_X(\omega_X, \pi_{X,Y}^{-1}(\omega_X\times A_Y))
     \end{align*}
-    where ${A_Y}$ denotes the projection ${\pi_Y(A)}$ is a Markov Kernel that satisfies 
+    % where ${A_Y}$ denotes the projection ${\pi_Y(A)}$ 
+    is a Markov Kernel that satisfies 
     \begin{enumerate}
         \item ${K_{X\to Y}(\omega_X, A) = K_X(\omega_X, A)\foralll A \in \mathcal{H}_Y}$ (compatibility with the original causal mechanism);
         \item ${K_{X\to Z}(\omega_X, A_Z) = K_{Y\to Z}\circ K_{X\to Y}(\omega_X, A)\foralll A\in \mathcal{H}_Z}$ (compositionality).
     \end{enumerate}
     \end{cor}
-    \begin{ex}[Kerneles between variables in the two binary variable case]
+    \begin{ex}[Kernels between variables in the two binary variable case]
     \label{ex:Kernels-between-variables-in-the-two-binary-variable-case}
         Consider the causal space from \autoref{ex:Two-variable-binary-causal-space}. We can use \autoref{cor:Kernels-between-variables} to compute
         \begin{align*}
@@ -167,17 +325,17 @@
         \end{align*}
         where ${A\in \mathcal{H_Y}}$ is arbitrary. 
     \end{ex}
-    % \begin{proof}
-    %     Proving property $1$ also shows that ${K_{X\to Y}}$ is a Markov kernel, since ${K_X}$ is a Markov kernel. Property $1$ is a direct application of \autoref{lem:Rephrasing-axiom-2}. Indeed, let ${\omega_X\in \Omega_X}$ and ${A\in \mathcal{H}_Y}$ be arbitrary. Since ${A\in \mathcal{H}_Y}$ it is of the form ${\prod_{i\in \{T\setminus Y\}}\times A_Y}$ and so ${\omega_x\in \pi_X(A) = \Omega_X}$. Moreover 
-    %     \begin{align*}
-    %         A \cap \{\Omega_{T\setminus \{X\}}\times \omega_X\}  &= \{\prod_{i\in \{T\setminus Y\}}\Omega_i\times A_Y\} \cap \{\prod_{i\in \{T\setminus X\}}\Omega_i \times \omega_X\}\\
-    %         &= \prod_{i\in T\setminus \{X,Y\}}\Omega_i \times A_Y \times \{\omega_X\}.
-    %     \end{align*}
-    %     By \autoref{lem:Rephrasing-axiom-2}, we have 
-    %     \begin{align*}
-    %         K_X(\omega, A) &= K_X(\omega_X, A \cap \{\Omega_{T\setminus \{X\}}\times \omega_X\})\\
-    %                         &= K_X(\omega_X, \prod_{i\in T\setminus \{X,Y\}}\Omega_i \times A_Y \times \{\omega_X\})\\
-    %                         &= K_{X\to Y}(\omega_X, A).
-    %     \end{align*}
-    % \end{proof}
+    We want to discuss when a collection of variables has a causal effect on a given event ${A}$.  
+    \begin{defn}[Effects in causal spaces]
+    \label{defn:Effects-in-causal-spaces}
+        Let ${\mathfrak{C}=(\prod_{t\in T} E_t, \otimes_{t\in T} \mathcal{E}_t, \mathbb{P}, \mathbb{K})}$ be a causal space, ${U\in 2^T}$, ${A\in H}$ be an event. Then, there is a trichotomy
+        \begin{enumerate}
+            \item If ${K_S(\omega_S, A)=K_{S\setminus U}(\omega_{S\setminus U},A)}$ for all ${S\in 2^T}$ and ${\omega_S\in\Omega_S}$, we say ${\mathcal{H}_U}$ has \emph{no causal effect on} ${A}$ or is \emph{non-causal} to ${A}$. Given a sub-${\sigma}$-algebra ${\mathcal{F}}$, ${\mathcal{H}}$ is non-causal to ${\mathcal{F}}$ if it is  non-causal to all ${A\in \mathcal{F}}$.    
+            \item If there exists ${\omega\in \Omega_U}$ such that ${K_U(\omega_U,A)\neq \mathbb{P}(A)}$, then ${\mathcal{H}_U}$ is \emph{actively causal} to ${A}$. Given a sub-${\sigma}$-algebra ${\mathcal{F}}$, ${\mathcal{H}}$ is actively causal to ${\mathcal{F}}$ if it is actively causal to some ${A\in \mathcal{F}}$.   
+            \item If neither of the two conditions above hold, we say that ${\mathcal{H}_U}$ is \emph{dormantly causal} to ${A}$. We say ${\mathcal{H}_U}$ is dormantly causal to a sub-${\sigma}$-algebra ${\mathcal{F}}$ if it is \emph{not actively causal} to any ${A\in \mathcal{F}}$ and there exists ${A\in \mathcal{F}}$ such that ${\mathcal{H}_U}$ is dormantly causal to ${A}$.    
+        \end{enumerate}
+    \end{defn}
+    \begin{nota}
+        We are often interested in causal effects between two variables. We say that ${X}$ is non-/actively/dormantly causal to ${Y}$ if ${\mathcal{H}_X}$ is non-/actively/dormantly to ${\mathcal{H}_Y}$.
+    \end{nota}
 \end{document}
