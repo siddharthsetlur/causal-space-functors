@@ -1,6 +1,6 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
-    \begin{defn}[Causal Space]
+    \begin{defn}[Causal Space \cite{axioms-1}]
     \label{defn:Causal-Space}
         A causal space is a product probability space ${(\Omega, \mathcal{H}, \mathbb{P}) = (\times_{t\in T}\Omega_t, \otimes_{t\in T}\mathcal{E}_t, \mathbb{P})}$ equipped with a collection of Markov kernels ${\mathbb{K} = \{K_S: S\in 2^T\}}$ called a \emph{causal mechanism}. The Markov kernels $K_S: (\Omega_S, \mathcal{H}_S)\to (\Omega, \mathcal{H})$ satisfy the following two axioms:
         \begin{enumerate}
@@ -326,7 +326,7 @@
         where ${A\in \mathcal{H_Y}}$ is arbitrary. 
     \end{ex}
     We want to discuss when a collection of variables has a causal effect on a given event ${A}$.  
-    \begin{defn}[Effects in causal spaces]
+    \begin{defn}[Effects in causal spaces \cite{axioms-1}]
     \label{defn:Effects-in-causal-spaces}
         Let ${\mathfrak{C}=(\prod_{t\in T} E_t, \otimes_{t\in T} \mathcal{E}_t, \mathbb{P}, \mathbb{K})}$ be a causal space, ${U\in 2^T}$, ${A\in H}$ be an event. Then, there is a trichotomy
         \begin{enumerate}
@@ -336,6 +336,15 @@
         \end{enumerate}
     \end{defn}
     \begin{nota}
-        We are often interested in causal effects between two variables. We say that ${X}$ is non-/actively/dormantly causal to ${Y}$ if ${\mathcal{H}_X}$ is non-/actively/dormantly to ${\mathcal{H}_Y}$.
+        We are often interested in causal effects between two variables. We say that ${X}$ is non-/actively/dormantly causal to ${Y}$ if ${\mathcal{H}_X}$ is non-/actively/dormantly to ${\mathcal{H}_Y}$. We say that ${X}$ is causal to ${Y}$ if ${X}$ is either actively or dormantly causal to ${Y}$.
     \end{nota}
+    Analogously to \autoref{defn:SCM-Ancestors}, we can define ancestors in the causal space framework. 
+    \begin{defn}[Ancestors]
+    \label{defn:Ancestors}
+        Let ${\mathfrak{C}=(\prod_{t\in T} E_t, \otimes_{t\in T} \mathcal{E}_t, \mathbb{P}, \mathbb{K})}$ be a causal space and ${X\in T}$ be an arbitrary variable. The set of ancestors of ${X}$ is
+        \begin{align*}
+            \text{An}_{\mathfrak{C}}(X) = \{Y\in T\setminus X: Y \text{ is causal to } X\}.
+        \end{align*}
+    \end{defn}
+    
 \end{document}

@@ -1,0 +1,103 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+Classically, causality is studied using structural causal models introduced by \cite{pearl2000causality}. IN the following section, we recap useful concepts and provide a few examples, primarily taken form \cite{elements_causal_inf} and \cite{Jonas_Peters_mini}. 
+\begin{defn}[Structural causal model \cite{elements_causal_inf}]\label{defn:Structural-causal-model}
+    A structural causal model ${\mathfrak{C} := (\mathbf{S}, \mathbb{P}_N)}$ consists of:
+    \begin{itemize}
+        \item A collection ${\mathbf{S}}$ of ${d}$ structural assignments
+        \begin{align*}
+        X_j := f_j(\text{PA}_j, N_j), \quad j = 1, \ldots, d,
+        \end{align*}
+        where ${\text{PA}_j \subseteq \{X_1, \ldots, X_d\} \setminus \{X_j\}}$ are called the \emph{parents} of ${X_j}$; and
+        \item A joint distribution ${\mathbb{P}_N = \mathbb{P}_{N_1,\ldots,N_d}}$ over the noise variables, which we require to be jointly independent; that is, ${\mathbb{P}_N}$ is a product distribution.
+    \end{itemize}
+    The graph ${G}$ of an SCM is obtained by creating one vertex for each ${X_j}$ and drawing directed edges from each parent in ${\text{PA}_j}$ to ${X_j}$, that is, from each variable ${X_k}$ occurring on the right-hand side of the structural equation to ${X_j}$. We henceforth assume this graph to be acyclic.
+\end{defn}
+We can now leverage the fact that the graph $G$ induced by an SCM is acyclic and define each variable as a function of its \emph{ancestors}.
+\begin{defn}[Ancestors]\label{defn:SCM-Ancestors}
+    Let ${G}$ be the DAG induced by an SCM ${\mathfrak{C}}$ over the variables ${X_1,\dots, X_n}$. Then ${X_i}$ is an \emph{ancestor} of ${X_j}$ ${i\neq j}$ if there exists a directed path ${\gamma: X_i \rightarrow \dots \rightarrow X_j}$ in ${G}$. We denote the set of ancestors of ${X_j}$ by ${AN_j}$.       
+\end{defn}
+\begin{pro}[Ancestral sampling and observational distributions \cite{elements_causal_inf} (Proposition 6.3)]\label{pro:Ancestral sampling and observational distributions}
+    Let ${\mathfrak{C} = (\mathbf{S}, \mathbb{P}_N)}$ be an SCM over the variables ${X_1,\dots, X_n}$. Then, there exists a unique joint probability distribution ${\mathbb{P}_X^\mathfrak{C}}$ over ${X_1,\dots , X_n}$ such that ${X_j = f_j(PA_j, N_j)}$ almost surely for all ${1\leq j \leq d}$.   
+\end{pro}
+\begin{proof}
+    Since the induced graph ${G}$ is acyclic, we can express any ${X_j}$ as a function of the noise variables of its ancestors 
+    \begin{align*}
+    X_j  = g_j((N_k)_{k\in AN_j}).
+    \end{align*}
+    We obtain ${g_j}$ by recursively evaluating the variables in the structural equation ${X_j = f_j(PA_j, N_j)}$, i.e. replacing each ${X_i\in PA_j}$ with its structural equation ${f_i(PA_i, N_i)}$ and repeating the process until we reach a root node (a node in the graph with no parents). This process is well-defined since the graph is acyclic. By construction, we have ${X_j = f_j(PA_j, N_j)}$ almost surely since we sample any noise variables from the distribution ${\mathbb{P}_N}$ and manipulate them according to the structural equations.       
+\end{proof}
+\subsection{Interventions}
+    One of the central tasks of causal inference is to compute interventional distributions, i.e. what happens to the distribution of variables in a causal model when one intervenes on the system. The rules of \emph{do-calculus} enable the computation of interventional distributions under certain conditions. We refer the reader to section 6.7 of \cite{elements_causal_inf} for details and present a toy example instead. 
+    TODO: background on Interventions
+    \begin{defn}[Hard and soft interventions]
+    \label{defn:Hard-and-soft-Interventions}
+        
+    \end{defn}
+    \begin{defn}[Interventional distribution \cite{elements_causal_inf}(Def 6.8)]
+    \label{defn:Interventional-distribution}
+        
+    \end{defn}
+    \begin{ex}[Simple three variable SCM]
+    \label{ex:Simple-three-variable-SCM}
+        Suppose we wish to model the relationship between three real-valued random variables: the distance $X$ travelled by a certain car in a week (in km), the price $Y$ of a liter of gas (in \$), and the total amount $Z$ spent on gas in a week (in \$). Here we assume that the amount of gas consumed per km travelled is constant and that the distance travelled and gas price are not determined by any external factors. We want to define structural equations that reflect the fact that an increase (resp decrease) in mileage or price \emph{cause} an increase (resp decrease) in amount spent. 
+        \begin{align*}
+            X &= 10N_X+100\\
+            Y &= 0.3N_Y + 1\\
+            Z &= 0.1XY + N_Z \\
+            N_Y, N_Y, N_Z &\sim \mathcal{N}(0,1). 
+        \end{align*}
+        The corresponding DAG is ${X\longrightarrow Z \longleftarrow Y}$. The observational distribution is 
+        \begin{align*}
+            (X,Y,Z) &= (10N_X+100, 0.3N_Y+1, 0.1(10N_X+10)(0.3N_Y+1) + N_Z ).
+        \end{align*}
+        Suppose we \emph{intervene} by setting the distance driven to be 
+    \end{ex}
+    \subsection{Causal effects}
+     Let ${X, Y}$ be variables in an SCM ${\mathfrak{C}}$. What does it mean for ${X}$ to have a \emph{causal effect} on ${Y}$? This is not as straightforward as it might first seem. Indeed, \autoref{ex:Dormant-causal-effects} shows that merely having a directed path between ${X}$ and ${Y}$ does not imply that ${X}$ has a causal effect on ${Y}$.
+     \begin{ex}[Dormant causal effects]
+     \label{ex:Dormant-causal-effects}
+        Consider the SCM ${\mathfrak{C}}$ on ${X, Y, W, Z}$ defined by the following structural equations
+        \begin{align*}
+        X &= N_X,\\
+        W &= 2X + N_W,\\
+        Z &= 3X + N_Z,\\
+        Y &= -6W + 4Z +N_Y
+        \end{align*}
+        whose DAG is depicted in \autoref{fig:dag-dormant-causal-effects}.
+        \begin{figure}
+            \[\begin{tikzcd}
+                & X \\
+                W && Z \\
+                & Y
+                \arrow[from=1-2, to=2-1]
+                \arrow[from=1-2, to=2-3]
+                \arrow[from=2-1, to=3-2]
+                \arrow[from=2-3, to=3-2]
+            \end{tikzcd}\]
+            \caption{DAG for the SCM in \autoref{ex:Dormant-causal-effects}.}
+            \label{fig:dag-dormant-causal-effects}
+        \end{figure}
+        Intervening on ${X}$ has no effect on ${Y}$ since the two paths cancel each other out. 
+        \begin{align*}
+            \mathbb{P}^{\mathfrak{C}; \text{do}(X=x)}(Y=y)&= \mathbb{P}_N(-6(2x+N_W)+4(3x+N_Z)+N_Y=y)\\
+            &= \mathbb{P}_N( -12x + 12x + N_Y-6N_w+4N_Z=y)= \mathbb{P}_N(N_Y-6N_w+4N_Z=y)\\
+            &= \mathbb{P}^{\mathfrak{C}}(Y=y).
+        \end{align*}
+        In other words, intervening on ${X}$ does not change the distribution of ${Y}$. We will later see that this is an example of a \emph{dormant causal effect}, i.e. an effect that can be made active by intervening (in this case by intervening on ${W}$ or ${Z}$ which removes one of the paths). This is distinct from the case where there are no directed paths from ${X}$ to ${Y}$, in which case there is no causal effect at all. There is no intervention that can make ${X}$ effect $Y$ causally in this case.
+     \end{ex}
+     \begin{defn}[Total causal effect \cite{elements_causal_inf} (Proposition 6.13)]
+     \label{defn:Total-causal-effect}
+        Given an SCM ${\mathfrak{C}}$, there is a \emph{total causal effect} from ${X}$ to ${Y}$ if one of the following equivalent conditions hold:
+        \begin{enumerate}
+            \item ${X\not\perp Y}$ in ${\mathbb{P}^{\mathfrak{C};\text{do}(X=\tilde{N}_X)}}$ for some random variable ${\tilde{N}_X}$.
+            \item There is ${x_0}$ such that ${\mathbb{P}^{\mathfrak{C};\text{do}(X=x_0)}_Y\neq \mathbb{P}_Y^\mathfrak{C}}$. In other words, there exists an intervention on ${X}$ that changes the distribution of ${Y}$.
+            \item There exist ${x_0}$ and ${x_1}$ such that ${\mathbb{P}^{\mathfrak{C};\text{do}(X=x_0)}_Y\neq \mathbb{P}^{\mathfrak{C};\text{do}(X=x_1)}_Y }$. 
+        \end{enumerate}
+     \end{defn}
+     As alluded to in \autoref{ex:Dormant-causal-effects}, the existence of a total causal effect is tied to the existence of a directed path. 
+     \begin{pro}[Directed paths and total causal effects \cite{elements_causal_inf} (Proposition 6.14)]
+     \label{pro:ro:Directed-paths-and-total-causal-effect}
+        Let ${G}$ be the underlying DAG of an SCM ${\mathfrak{C}}$ and ${X,Y}$ be variables. If there is a total causal effect between ${X}$ and ${Y}$, then there exists a directed path ${X\to Y}$. The converse does not hold, i.e. there may be a directed path between ${X}$ and ${Y}$ without a corresponding total causal effect between the variables.
+     \end{pro}
+\end{document}
