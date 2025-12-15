@@ -4,14 +4,14 @@
     \label{defn:Causal-Space}
         A causal space is a product probability space ${(\Omega, \mathcal{H}, \mathbb{P}) = (\times_{t\in T}\Omega_t, \otimes_{t\in T}\mathcal{E}_t, \mathbb{P})}$ equipped with a collection of Markov kernels ${\mathbb{K} = \{K_S: S\in 2^T\}}$ called a \emph{causal mechanism}. The Markov kernels $K_S: (\Omega_S, \mathcal{H}_S)\to (\Omega, \mathcal{H})$ satisfy the following two axioms:
         \begin{enumerate}
-            \item for all ${A\in \mathcal{H}}$ and ${\omega_s\in \Omega_s}$,\begin{align*}
+            \item for all ${A\in \mathcal{H}}$ and ${\omega_S\in \Omega_S}$,\begin{align*}
                 K_{\emptyset}(\omega_S, A) &= \mathbb{P}(A);
             \end{align*}
             \item for all ${\omega_S\in \Omega_S}$, ${A\in \mathcal{H}_S}$, and ${B\in \mathcal{H}}$, 
             \begin{align*}
                 K_S(\omega_S, A\cap B) &= 1_A(\omega_S)K_S(\omega_S, B) = \delta_{\omega_S}(A)K_S(\omega_S, B).
             \end{align*}
-            In particular, for ${A\in \mathcal{H}_S}$, ${K_S(\omega_s,A) = \delta_{\omega_S}(A)}$.
+            In particular, for ${A\in \mathcal{H}_S}$, ${K_S(\omega_S,A) = \delta_{\omega_S}(A)}$.
         \end{enumerate}
     \end{defn}
     \begin{rem}[Observational and interventional distributions]
@@ -72,9 +72,9 @@
               K_S(\omega_S, A\cap B) &= \delta_{\omega_S}(A)K_S(\omega_S, B)\\
                                     &\stackrel{\omega_S\in A}{=}K_S(\omega_S, B)
         \end{align*}
-        as desired. Note that ${\omega_S\in A}$ by construction since 
+        as desired. Note that ${\omega_S\in A}$ by construction since
         \begin{align*}
-            A = \pi_S^{-1}(\omega_S) = \{\omega\in \Omega: \pi_s(\omega)=\omega_S\}=\{\omega_S\}\times \Omega_{T\setminus S}\in \mathcal{H}_S.
+            A = \pi_S^{-1}(\omega_S) = \{\omega\in \Omega: \pi_S(\omega)=\omega_S\}=\{\omega_S\}\times \Omega_{T\setminus S}\in \mathcal{H}_S.
         \end{align*}
         Note that if ${\omega_S\notin\pi_S(B)}$, then ${A\cap B=\emptyset}$ forcing ${K_S(\omega_S,A\cap B)=0}$. 
         \begin{align*}
@@ -90,16 +90,16 @@
         Applying the rephrased axiom to ${A\cap B}$ we get
         \begin{align*}
             K_S(\omega_S, A\cap B) &= K_S(\omega_S, A\cap B \cap \pi^{-1}_S(\omega_S))
-        \end{align*}. 
-        If ${\omega_S\notin A}$, then ${A\cap B = \emptyset}$ and there is nothing to show since we get ${0}$ using either method. if ${\omega_S\in A}$, then ${A\cap \pi_S^{-1}(\omega_S)=\pi_S^{-1}(\omega_S)}$ and hence 
+        \end{align*}.
+        If ${\omega_S\notin A}$, then ${A\cap B = \emptyset}$ and there is nothing to show since we get ${0}$ using either method. If ${\omega_S\in A}$, then ${A\cap \pi_S^{-1}(\omega_S)=\pi_S^{-1}(\omega_S)}$ and hence 
         \begin{align*}
             K_S(\omega_S, A\cap B) &= K_S(\omega_S, B \cap \pi^{-1}_S(\omega_S))\\
             &\stackrel{\diamondsuit}{=}K_S(\omega_S, B)\\
             &= \underbrace{\delta_{\omega_S}(A)}_{=1}K_S(\omega_S, B)
         \end{align*}
-        where ${\diamondsuit}$ follows fro applying the rephrased axiom again, but this time to ${K_S(\omega_S, B)}$. 
+        where ${\diamondsuit}$ follows from applying the rephrased axiom again, but this time to ${K_S(\omega_S, B)}$. 
     \end{proof}
-    \sid{See the alternate notation and proof (the one i originnally had) commented out below for clarity.}
+    \sid{See the alternate notation and proof (the one I originally had) commented out below for clarity.}
     \begin{figure}
         \centering
         \begin{subfigure}{0.45\linewidth}
@@ -167,7 +167,7 @@
                 at (-1.2,2.1) {$A \cap B$\\$=$\\$A \cap C$};
             \draw[->, orange!70!black, thick] (-0.6,2.1) -- (0.65,2.1);
             
-            % Point omega_s on axis (centered in A)
+            % Point omega_S on axis (centered in A)
             \fill[blue!70!black] (\Acenter,0) circle (2.5pt);
             \node[blue!70!black, font=\bfseries, below] at (\Acenter,-0.15) {$\omega_s$};
         \end{tikzpicture}
@@ -198,7 +198,7 @@
             \draw[thick, red!70!black] (2.0,1.0) rectangle (5.5,3.2);
             \node[red!70!black, font=\large\bfseries] at (3.75,2.1) {$B$};
 
-            % Point omega_s on axis (centered in A)
+            % Point omega_S on axis (centered in A)
             \fill[blue!70!black] (\Acenter,0) circle (2.5pt);
             \node[blue!70!black, font=\bfseries, below] at (\Acenter,-0.15) {$\omega_s$};
         \end{tikzpicture}
@@ -247,11 +247,11 @@
 %         Let ${\tilde{B} = A\cap B}$. We can assume without loss of generality that ${\tilde{B} = \emptyset}$, since there is nothing to show otherwise (by definition we have ${K_S(\omega_S, A\cap B)=0}$). Note that ${\omega_S\notin\pi(\tilde{B})}$, since ${\omega_S\notin A}$. So, applying the rephrased axiom to ${\tilde{B}}$, we get ${K_S(\omega_S, \tilde{B}) = 0}$ as desired. 
 %     \end{proof}
 %     *********************************************
-    The takeaway here is that the interventional distribution of an event $B\in \mathcal{H}$ upon intervening on ${\omega\in\Omega_S}$ is completely determined by the intersection with events whose $\pi_S$-projection contains ${\omega_S}$. In particular any outcome ${\nu\in \Omega}$ with ${\nu_s\neq \omega_S}$ has probability $0$ in the interventional distribution ${K_S(\omega_S, \Omega)}$.
+    The takeaway here is that the interventional distribution of an event $B\in \mathcal{H}$ upon intervening on ${\omega\in\Omega_S}$ is completely determined by the intersection with events whose $\pi_S$-projection contains ${\omega_S}$. In particular, any outcome ${\nu\in \Omega}$ with ${\nu_S\neq \omega_S}$ has probability $0$ in the interventional distribution ${K_S(\omega_S, \Omega)}$.
     \begin{ex}[Two variable binary example (contd)]\label{ex:Two-variable-binary-example-(contd)}
-    Consider the causal space from \autoref{ex:Two-variable-binary-causal-space} again. Let ${B = \{(0,1),(1,1)\}}$ (i.e. the event $Y=1$). Computing $K_X(0,B)$ using the rephrased axiom we get 
+    Consider the causal space from \autoref{ex:Two-variable-binary-causal-space} again. Let ${B = \{(0,1),(1,1)\}}$ (i.e. the event $Y=1$). Computing $K_X(0,B)$ using the rephrased axiom we get
     \begin{align*}
-    K_X(0, B) &= K_X(0, B\cap \{(0,0),0,1\})\\
+    K_X(0, B) &= K_X(0, B\cap \{(0,0),(0,1)\})\\
               &= K_X(0, \{(0,1)\})
     \end{align*}
     Moreover, 
@@ -263,17 +263,15 @@
 
     \begin{pro}[Kernels between subsets of variables]
     \label{pro:Kernels-between-subsets-of-variables}
-    Let ${\mathfrak{C} = (\prod_{t\in T}\Omega_t, \otimes_{t\in T}\mathcal{E}_t, \mathbb{P}, \mathbb{K})}$ be a causal space and ${U, V\in 2^T}$ be be disjoint subsets of vriables. Then,
+    Let ${\mathfrak{C} = (\prod_{t\in T}\Omega_t, \otimes_{t\in T}\mathcal{E}_t, \mathbb{P}, \mathbb{K})}$ be a causal space and ${U, V\in 2^T}$ be disjoint subsets of variables. Then,
     \begin{align*}
         K_{U\to V}: \Omega_U\times \mathcal{H}_V &\to [0,1]\\
                 (\omega_U, A)&\mapsto K_U(\omega_U, \pi^{-1}_{U\cup V}(\omega_S\times A_V) )
     \end{align*}
     % where ${A_V}$ denotes the projection ${\pi_V(A)}$ 
     is a Markov Kernel that satisfies 
-    \begin{enumerate}
-        \item ${K_{U\to V}(\omega_U, A) = K_U(\omega_X, A)\foralll A \in \mathcal{H}_V}$ (compatibility with the original causal mechanism);
-        \item ${K_{U\to W}(\omega_X, A) = K_{V\to W}\circ K_{U\to V}(\omega_X, A)\foralll A\in \mathcal{H}_Z}$ (compositionality).
-    \end{enumerate}
+    $${K_{U\to V}(\omega_U, A) = K_U(\omega_X, A)\foralll A \in \mathcal{H}_V}$$ (compatibility with the original causal mechanism).
+        % \item ${K_{U\to W}(\omega_X, A) = K_{V\to W}\circ K_{U\to V}(\omega_X, A)\foralll A\in \mathcal{H}_Z}$ (compositionality).
     \end{pro}
     \begin{proof}
         Proving property $1$ is a direct application of \autoref{lem:Rephrasing-axiom-2}. Indeed, observe that ${A\in \mathcal{H}_V}$ is of the form ${\prod_{i\in \{T\setminus V\}}\Omega_i\times A_V}$ and hence can be written as ${\pi_V^{-1}(A_V)}$. Also note that \newline${\pi^{-1}_{U\cup V}(\omega_S\times A_V)={\prod_{i\in T\setminus \{U\cup V\}}\Omega_i\times \{\omega_U\}\times A_V}}$ So, by \autoref{lem:Rephrasing-axiom-2},
@@ -291,11 +289,10 @@
         \end{align*} 
         where ${(\spadesuit)}$ is due to the fact that ${K_U(\omega_U, B)}$ is a probability measure whose support is the set of events ${B}$ whose projection onto ${\Omega_U}$ contains ${\omega_U}$ (by \autoref{lem:Rephrasing-axiom-2}). 
 
-        TODO: compositionality
     \end{proof}
 
 
-    \begin{rem}[Kernels between non-disjoint sets of variable]
+    \begin{rem}[Kernels between non-disjoint sets of variables]
     \label{rem:Kernels between non-disjoint sets of variables}
         
     \end{rem}
@@ -308,10 +305,8 @@
     \end{align*}
     % where ${A_Y}$ denotes the projection ${\pi_Y(A)}$ 
     is a Markov Kernel that satisfies 
-    \begin{enumerate}
-        \item ${K_{X\to Y}(\omega_X, A) = K_X(\omega_X, A)\foralll A \in \mathcal{H}_Y}$ (compatibility with the original causal mechanism);
-        \item ${K_{X\to Z}(\omega_X, A_Z) = K_{Y\to Z}\circ K_{X\to Y}(\omega_X, A)\foralll A\in \mathcal{H}_Z}$ (compositionality).
-    \end{enumerate}
+         $${K_{X\to Y}(\omega_X, A) = K_X(\omega_X, A)\foralll A \in \mathcal{H}_Y}$$ (compatibility with the original causal mechanism).
+        % \item ${K_{X\to Z}(\omega_X, A_Z) = K_{Y\to Z}\circ K_{X\to Y}(\omega_X, A)\foralll A\in \mathcal{H}_Z}$ (compositionality).
     \end{cor}
     \begin{ex}[Kernels between variables in the two binary variable case]
     \label{ex:Kernels-between-variables-in-the-two-binary-variable-case}
@@ -325,6 +320,63 @@
         \end{align*}
         where ${A\in \mathcal{H_Y}}$ is arbitrary. 
     \end{ex}
+    \begin{rem}[Causal mechanisms encode interventional distributions]
+    \label{rem:Causal-mechanisms-encode-interventional-distributions}
+        One of the key features of causal spaces is that interventional distributions are explicitly specified by the causal kernels. To see this consider a kernel ${K_{X\to Y}}$ between distrinct variables as defined in \autoref{cor:Kernels-between-variables}. Let ${x_0\in \Omega_X}$ be arbitrary and ${A\in \mathcal{H}_Y}$ be arbitrary, then 
+        \begin{align*}
+            K_{X\to Y}(x_0, A) &= K_X(x_0, \pi_{X,Y}^{-1}(x_0\times A_Y))\\
+                               &= K_X(x_0, A)\\
+                               &\stackrel{\spadesuit}{=} \int_{\Omega_X}\delta_{x_0}(d\omega_X)K_X(\omega_X,B). 
+        \end{align*}
+        Intuitively, ${K_{X\to Y}(x_0, y_0)}$ computes ${\mathbb{P}^{\mathfrak{C};\text{do}(X=x_0)}(Y\in A_y)}$. The integral computes the interventional distribution by first placing the distribution ${\delta_{x_0}}$ on ${\mathcal{H}_X}$ and then propogating its effect via the causal mechanism ${K_X}$. The expansion in terms of the integral enables us to replace the Dirac measure in ($\spadesuit$) with an arbitrary probability measure ${\mathbb{Q}}$ on ${\mathcal{H}_Y}$ would compute the probability of ${A_y}$ after intervening on ${\mathcal{H}_X}$ by ${\mathbb{Q}}$.
+    \end{rem}
+    Each causal kernel ${K_U(\omega_U, A)}$ computes an interventional ${\mathbb{P}^{\mathfrak{C};\text{do}(X_u = \omega_U)}(A)}$, but often we want to construct a new causal space reflecting the intervention itself. This new space has observational distribution equal to the interventional distribution (for instance the observational distribution on the intervened-upon sub-$\sigma$-algebra $\mathcal{H}_U$ matches the intervention), and causal mechanisms updated to reflect soft interventions. This is analogous to obtaining a new graphical model by replacing edited arrows and distributions after intervention.
+
+    \begin{defn}[Interventions \cite{axioms-1}]
+        \label{defn:Interventions}
+            Let ${\mathfrak{C} = (\prod_{t\in T}\Omega_t, \otimes_{t\in T}\mathcal{E}_t, \mathbb{P}, \mathbb{K})}$ be a causal space, ${U\in 2^T}$, ${\mathbb{Q}}$ be a probability measure on ${\mathcal{H}_U}$, and ${\mathbb{L}=\{L_V : V\in 2^U\}}$ be a causal mechanism on ${(\Omega_V,\mathcal{H}_U, \mathbb{Q})}$. An intervention on ${\mathcal{H}_U}$ via ${(\mathbb{Q}, \mathbb{L})}$ is a new causal space \\${(\prod_{t\in T}\Omega_t, \otimes_{t\in T}\mathcal{E}_t, \mathbb{P}^{\text{do}(U, \mathbb{Q})}, \mathbb{K}^{\text{do}(U, \mathbb{Q}, \mathbb{L})})}$, where 
+            \begin{align*}
+                \mathbb{P}^{\text{do}(U, \mathbb{Q})}(A) &= \int_{\Omega_U} \mathbb{Q}(d\omega_U)K_U(\omega_U,A)
+            \end{align*}
+            and
+            \begin{align*}
+                K_S^{\text{do}(U, \mathbb{Q}, \mathbb{L})}(\omega_S, A) &= \int_{\omega_U} L_{S\cap U}(\omega_{S\cap U},d\nu_U)K_{S\cup U}((\omega_{S\setminus U}, \nu_U), A)
+            \end{align*}
+            for all ${A\in \mathcal{H}}$ and ${\omega_S\in \Omega_S}$.
+    \end{defn}
+
+    Axiom 2 enforces an important condition in causal inference, namely that intervening on a sub-${\sigma}$-algebra ${\mathcal{H}_U}$ by placing a probability distribution ${\mathbb{Q}}$ results in the observational distribution of ${\mathcal{H}_U}$ being precisely ${\mathbb{Q}}$ after intervention. Intuitively, in the graphical model framework, intervening on a variable ${X}$ by placing a Dirac measure ${\delta_a}$ on it results in the interventional distribution of ${X}$ being precisely this point measure. One desirable property that the axioms of causal spaces do not enforce is \emph{consistency}, i.e.  . The following is a counter-example. 
+    \begin{ex}[Causal space that fails compositionality]
+    \label{ex:Causal-space-that-fails-compositionality}
+        Consider the following causal space on ${3}$ variables with countable sample  spaces  (i.e. ${T=\{X,Y<Z\}}$, and ${\Omega = \Omega_X\times\Omega_Y\times\Omega_Z = \mathbb{N}^3}$). Since the sample spaces are countable, we can define the kernels on singleton events and extend them to the entire ${\sigma}$-algebra by summing. We focus on the causal mechanisms involving interventions on ${X}$.  Let ${\mathbb{P}_N}$ be a jointly independent distribution over noise variables ${(N_X, N_Y, N_Z)}$. 
+        \begin{align*}
+            K_X(\omega_X, (\nu_X,\nu_Y,\nu_Z )) &= \delta_{\omega_X}(\nu_X)\mathbb{P}_N(\{(n_X, n_Y,n_Z): \nu_Y = 2\nu_X+n_Y, \nu_Z = \nu_X+\nu_Y+n_Z \})\\
+            &= \delta_{\omega_X}(\nu_X)\mathbb{P}_N(\{(n_Y,n_Z): \nu_Y = 2\omega_X+n_y, \nu_Z = 3\omega_X+n_Y+n_Z \})\\
+            K_{X,Y}(\begin{pmatrix}
+                \omega_X\\ \omega_Y
+            \end{pmatrix}, \begin{pmatrix}
+                \nu_X\\ \nu_Y \\ \nu_Z
+            \end{pmatrix}) &= \delta_{\begin{pmatrix}
+                \omega_X\\ \omega_Y
+            \end{pmatrix}}\begin{pmatrix}
+                \nu_X\\ \nu_Y
+            \end{pmatrix}\mathbb{P}_N(\{(n_X, n_Y,n_Z): \nu_Z = 2\nu_X+\nu_y+n_Z \})\\
+            &= \delta_{\begin{pmatrix}
+                \omega_X\\ \omega_Y
+            \end{pmatrix}}\begin{pmatrix}
+                \nu_X\\ \nu_Y
+            \end{pmatrix}\mathbb{P}_N(\{n_Z: \nu_Z = 2\omega_X+\omega_y+n_Z \})
+        \end{align*}
+        By \autoref{cor:Kernels-between-variables}, 
+        \begin{align*}
+            K_{X\to Y}(\omega_X, \nu_Y) &= K_X(\omega_X, \omega_X\times\nu_Y\times \Omega_Z)\\
+            &= \sum_{\mu_Z\in \Omega_Z}\delta_{\omega_X}(\omega_X)\mathbb{P}_N(\{(n_Y,n_Z): \nu_Y = 2\nu_X+n_Y, \mu_Z = 3\omega_X+n_Z \}) \\
+            &= \sum_{\mu_Z\in \Omega_Z}\mathbb{P}_N(\{(n_X, n_Y,n_Z): \nu_Y = 2\omega_X+n_y, \mu_Z = 3\omega_X+n_Y+n_Z \}) \\
+            &= \mathbb{P}_N(\{(n_X, n_Y,n_Z): \nu_Y = 2\omega_X+n_y \})
+        \end{align*}  		
+    \end{ex}
+    
+    
     We want to discuss when a collection of variables has a causal effect on a given event ${A}$.  
     \begin{defn}[Effects in causal spaces \cite{axioms-1}]
     \label{defn:Effects-in-causal-spaces}
