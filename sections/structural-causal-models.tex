@@ -2,7 +2,7 @@
 \begin{document}
 Classically, causality is studied using structural causal models introduced by \cite{pearl2000causality}. In the following section, we recap useful concepts and provide a few examples, primarily taken form \cite{elements_causal_inf} and \cite{Jonas_Peters_mini}. 
 \subsection{Causal graphical models}
-A \emph{causal graphical model} (sometimes referred to as a causal Bayesian network) is a pair that consists of a graph whose vertices correspond to the random variables in the system of interest and a compatible joint distriubtion on the variable. In order to characterize compatibablity, we need to connect probability theoretic independence to a graph theoretic notion. We first recall some definitions.  
+A \emph{causal graphical model} (sometimes referred to as a causal Bayesian network) is a pair that consists of a graph whose vertices correspond to the random variables in the system of interest and a compatible joint distribution on the variable. In order to characterize compatibility, we need to connect probability theoretic independence to a graph theoretic notion. We first recall some definitions.  
 \begin{defn}[Graph theoretic notions\cite{elements_causal_inf}6.1]\label{defn:Immorality}
     Let ${G=(V,E)}$ be a directed graph.
 
@@ -59,7 +59,7 @@ A \emph{causal graphical model} (sometimes referred to as a causal Bayesian netw
     Given a DAG $G$ and a joint distribution $\mathbb{P}_V$ on the random variables corresponding to the nodes of $G$, this distribution is said to satisfy
 
     \begin{enumerate}
-        \item the \emph{global Markov property} with respect to the DAG $G$ if
+        \item The \emph{global Markov property} with respect to the DAG $G$ if
         \[
         A \perp\!\!\!\perp_G B \mid C \implies A \perp\!\!\!\perp B \mid C
         \]
@@ -78,7 +78,7 @@ A \emph{causal graphical model} (sometimes referred to as a causal Bayesian netw
     \label{thm:markov-equivalence}
         If $P_V$ has a density $p$, then all Markov properties in \autoref{defn:Markov-property} are equivalent.
     \end{thm}
-    Using Markov equivalence as our notion of compatibablity, we are now ready to define a causal graphical model. 
+    Using Markov equivalence as our notion of compatibility, we are now ready to define a causal graphical model. 
     \begin{defn}[Causal graphical model \cite{elements_causal_inf} Def 6.32]
     \label{defn:Causal-graphical-model}
         A \emph{causal graphical model} over random variables ${\mathbf{X} = X_1,\dots, X_d}$ consists of a graph with one vertex for each random variable and a distribution ${\mathbb{P}_\mathbf{X}}$ such that ${\mathbb{P}_\mathbf{X}}$ has a strictly positive density function ${p}$ and is Markovian with respect to ${G}$. 
@@ -102,9 +102,9 @@ A \emph{causal graphical model} (sometimes referred to as a causal Bayesian netw
                 0 & \text{otherwise}. 
             \end{cases}
         \end{align*}
-        Note that in this case ${\tilde{\text{PA}}_{X_k}=\emptyset}$. In graphical terms, we delete all incoming edges to ${X_k}$. We often surpress the ${\delta}$ when denoting a hard intervention by writing $\mathbb{P}^{\text{do}(X_k = a)}(x_1,\dots, x_d)$.
+        Note that in this case ${\tilde{\text{PA}}_{X_k}=\emptyset}$. In graphical terms, we delete all incoming edges to ${X_k}$. We often suppress the ${\delta}$ when denoting a hard intervention by writing $\mathbb{P}^{\text{do}(X_k = a)}(x_1,\dots, x_d)$.
     \end{rem}
-    While graphical models are sufficient to compute interventional distributions, they are not sufficient to compute counterfactuals. Below is an example of a graphical model being used to compute interventional distributinos but failing to compute counterfactuals.
+    While graphical models are sufficient to compute interventional distributions, they are not sufficient to compute counterfactuals. Below is an example of a graphical model being used to compute interventional distributions but failing to compute counterfactuals.
     \begin{ex}[Graphical model interventions and Counterfactuals]
     \label{ex:Graphical-model-interventions-and-Counterfactuals}
         TODO

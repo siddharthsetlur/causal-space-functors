@@ -1,0 +1,41 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+    We now propose a new categorical framework for causality with compositionality baked in from the start. For now (though we will build causal functors from other data later) assume that we are given a causal graphical model ${(G, \mathbb{P}_X)}$ over random variables ${\mathbf{X} = X_1,\dots,X_n}$   as in \autoref{defn:Causal-graphical-model}. 
+    \begin{defn}[Free category over a directed graph]\label{defn:Free-category-over-a-directed-graph}
+     Let $G$ be a directed graph with vertex set $V(G)$. Augment $G$ by adding a vertex $\star$ and an edge $\star \to X_i$ for each $X_i \in V(G)$ with no incoming edges.  Define the category $\operatorname{Free}(G)$ as follows. Objects in this category are vertices of the graph, while morphisms are tuples of composable edges, i.e. for each edge $e$ from ${X_i \to X_j}$  (including the edges originating at ${\star}$), we have a morphism from ${X_i \to X_j}$ and for each path ${\gamma : X_i \leadsto X_j}$, we have a morphism ${X_i \to X_j}$ obtained by composing the edges along ${\gamma}$.  
+    \end{defn}
+    \begin{ex}[Free category on the diamond DAG]\label{ex:Free-category-on-the-diamond-DAG}
+        Consider the DAG $G$ depicted in \autoref{fig:dag-dormant-causal-effects}. To construct ${\operatorname{Free}(G)}$ we first augment the graph by adding a vertex ${\star}$ and a single edge ${\star \to X}$. So, we have ${\operatorname{Ob(Free)}(G) = \{\star, X, W, Z, Y\}}$ and the generators for the morphisms being the edges 
+        \begin{align*}
+            \operatorname{Hom}(\star, X) &= \{\star \to X\}\\
+            \operatorname{Hom}(X, W) &= \{X\to W\}\\
+            \operatorname{Hom}(X, Z) &= \{X\to Z\}\\
+            \operatorname{Hom}(W,Y) &= \{W\to Y\}\\
+            \operatorname{Hom}(Z,Y) &= \{Z\to Y\}.
+        \end{align*} 
+        Finally, we also have the morphisms obtained by composing edges:
+        \begin{align*}
+            \operatorname{Hom}(\star, Z) &= \{(X\to Z)\circ (\star \to X)\}\\
+            \operatorname{Hom}(\star, W) &= \{(X\to W)\circ (\star \to X)\}\\
+            \operatorname{Hom}(X, Y) &= \{(W\to Y)\circ(X\to W), (Z\to Y)\circ(X\to Z)\}\\
+            \operatorname{Hom}(\star, Y) &= \{(W\to Y)\circ(X\to W)\circ(\star \to X), (Z\to Y)\circ(X\to Z)\circ (\star \to X)\}.
+        \end{align*}
+    \end{ex}
+    The accompanying Markov distribution ${\mathbb{P}_X}$ enables us to define a functor that represents the causal models. 
+    \begin{defn}[Causal functor]\label{defn:Causal-functor}
+    Let ${(G, \mathbb{P}_X)}$ be a causal graphical model and ${\operatorname{Free}(G)}$ be the free category induced by ${G}$. Let each ${X_i}$ take values in the measurable space ${(\mathcal{X}_i, \mathcal{H}_i)}$    Define a functor
+    \begin{align*}
+         \mathcal{F}: \operatorname{Free}(G) &\to \operatorname*{BorelStoch}\\
+                    X_i &\longmapsto \mathcal{X}_i 
+    \end{align*}
+    Given a generator morphism (one induced by an edge) ${X_i\to X_j}$, we define
+    \begin{align*}
+    X_i\to X_j \longmapsto &\mathcal{F}(X_i\to X_j): \mathcal{X}_i \times \mathcal{H}_j \to [0,1]\\
+                    &(\omega_i, A)\mapsto \mathbb{P}^{\text{do}(X_i=\delta_{\omega_i})}(x\in A) \\
+    \star \to X_i \longmapsto &\mathcal{F}(\star\to X_i): \star \times \mathcal{H}_i \to [0,1]\\
+                    &A \mapsto \mathbb{P}(x\in A) 
+    \end{align*}
+    with the remaining morphisms being defined as compositions of these generators using the Chapman-Kolomogorov formula. 
+    \end{defn}
+    
+\end{document}
