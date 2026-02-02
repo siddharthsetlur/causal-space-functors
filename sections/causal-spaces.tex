@@ -290,12 +290,6 @@
         where ${(\spadesuit)}$ is due to the fact that ${K_U(\omega_U, B)}$ is a probability measure whose support is the set of events ${B}$ whose projection onto ${\Omega_U}$ contains ${\omega_U}$ (by \autoref{lem:Rephrasing-axiom-2}). 
 
     \end{proof}
-
-
-    \begin{rem}[Kernels between non-disjoint sets of variables]
-    \label{rem:Kernels between non-disjoint sets of variables}
-        
-    \end{rem}
     It's worth spelling out what this boils down to when the sets are single variables. 
     \begin{cor}[Kernels between variables]\label{cor:Kernels-between-variables}
     Let ${\mathfrak{C} = (\prod_{t\in T}\Omega_t, \otimes_{t\in T}\mathcal{E}_t, \mathbb{P}, \mathbb{K})}$ be a causal space and ${X,Y\in T}$ be distinct variables. Then, 
@@ -320,6 +314,20 @@
         \end{align*}
         where ${A\in \mathcal{H_Y}}$ is arbitrary. 
     \end{ex}
+    \begin{rem}[Kernels between from a subset to a superset of variables]
+        \label{rem:Kernels between subsets of variables}
+            Observe that \autoref{lem:Rephrasing-axiom-2} also enables us to define kernels ${K_{U\to V}:\Omega_U\times H_V\to [0,1]}$ for all ${U\subset V}$ by
+            \begin{align*}
+                K_{U\to V}(\omega_U, A) &= K_U(\omega_U, A\cap\pi_U^{-1}(\omega_U))\\
+                &= \delta_{\omega_U}(A_U)K_U(\omega_U, \pi^{-1}_{U\cup \{V\setminus U\}}(\omega_U\times A_{V\setminus U}))
+            \end{align*}
+            for all ${\omega_U\in \Omega_U}$ and ${A\in \mathcal{H}_V}$. The ${\delta{\omega_U}(\nu_U)}$ term ensures that we get ${0}$ if ${A\cap \pi^{-1}_U(\omega_U)=\emptyset}$ which can only occur if ${\omega_U\notin A\in \mathcal{H}_V}$ since ${V\supset U}$ In the singleton case we get 
+            \begin{align*}
+                K_{U\to V}(\omega_U, \nu_V) = \delta_{\omega_U}(\nu_U)K_U(\omega_U, \begin{pmatrix}
+                    \omega_U \\ \nu_{V\setminus U}
+                \end{pmatrix}). 
+            \end{align*}
+        \end{rem}
     \begin{rem}[Causal mechanisms encode interventional distributions]
     \label{rem:Causal-mechanisms-encode-interventional-distributions}
         One of the key features of causal spaces is that interventional distributions are explicitly specified by the causal kernels. To see this consider a kernel ${K_{X\to Y}}$ between distrinct variables as defined in \autoref{cor:Kernels-between-variables}. Let ${x_0\in \Omega_X}$ be arbitrary and ${A\in \mathcal{H}_Y}$ be arbitrary, then 

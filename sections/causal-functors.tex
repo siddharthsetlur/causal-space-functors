@@ -4,6 +4,9 @@
     \begin{defn}[Free category over a directed graph]\label{defn:Free-category-over-a-directed-graph}
      Let $G$ be a directed graph with vertex set $V(G)$. Augment $G$ by adding a vertex $\star$ and an edge $\star \to X_i$ for each $X_i \in V(G)$ with no incoming edges.  Define the category $\operatorname{Free}(G)$ as follows. Objects in this category are vertices of the graph, while morphisms are tuples of composable edges, i.e. for each edge $e$ from ${X_i \to X_j}$  (including the edges originating at ${\star}$), we have a morphism from ${X_i \to X_j}$ and for each path ${\gamma : X_i \leadsto X_j}$, we have a morphism ${X_i \to X_j}$ obtained by composing the edges along ${\gamma}$.  
     \end{defn}
+    \begin{nota}
+        The domain ${\operatorname{Free}(G)}$ of a causal functor will always be induced by a DAG G augmented by the addition of ${\star}$ along with edges from ${\star}$ to root nodes that do not have any incoming edges from other random variables. 
+    \end{nota}
     \begin{ex}[Free category on the diamond DAG]\label{ex:Free-category-on-the-diamond-DAG}
         Consider the DAG $G$ depicted in \autoref{fig:dag-dormant-causal-effects}. To construct ${\operatorname{Free}(G)}$ we first augment the graph by adding a vertex ${\star}$ and a single edge ${\star \to X}$. So, we have ${\operatorname{Ob(Free)}(G) = \{\star, X, W, Z, Y\}}$ and the generators for the morphisms being the edges 
         \begin{align*}
@@ -37,5 +40,35 @@
     \end{align*}
     with the remaining morphisms being defined as compositions of these generators using the Chapman-Kolomogorov formula. 
     \end{defn}
-    
+    Observe that \autoref{defn:Causal-functor} is functorial by construction, since morphisms are defined as compositions of generators. 
+    \begin{defn}[Intervened functor]
+    \label{defn:Intervened-functor}
+    Let ${\mathcal{F}:\operatorname{Free}(G)\to \operatorname{BorelStoch}}$ be a causal functor and ${U}$ be a subset of variables to intervene upon. Let ${\mathcal{H}: \operatorname{Free}(H)\to\operatorname{BorelStoch}}$ be a causal functor over the variables in ${U}$. We construct the intervened graph ${G_U}$ as follows. The vertex set remains unchanged from ${G}$ with the edge set being determined by the following procedure: 
+    \begin{enumerate}
+        \item Edges with both endpoints outside ${U}$ are  unchanged from ${G}$.
+        \item Edges with both endpoints in ${U}$ are defined by ${H}$.
+        \item Edges from ${U}$ to outside ${U}$ are unchanged from ${G}$.
+        \item Edges from outside ${U}$ into ${U}$ are deleted.
+    \end{enumerate}
+    Note that ${\star}$ is treated as part of ${U}$ when defining ${\mathcal{H}}$. The intervened functor is defined by
+    \begin{align*}
+        \mathcal{F}^{\text{do}(U=H)}: \operatorname{Free}(G_U)&\to \operatorname{BorelStoch}\\
+        X_i &\mapsto \mathcal{F}(X_i)
+    \end{align*}
+    on objects, and on generator morphisms induced by edges ${X_i\to X_j}$ by:
+    \begin{align*}
+        \mathcal{F}^{\text{do}(U=H)}(X_i\to X_j) = \begin{cases}
+            \mathcal{H}(X_i\to X_j) & j \in U \\
+            \mathcal{F}(X_i\to X_j) & j \notin U
+        \end{cases}.
+    \end{align*}
+    \end{defn}
+    \sid{This might need a restriction to ensure that we do not create any new cycles (H might be acyclic but it might lead to cycles once we construct the new intervened graph)}. 
+    \begin{rem}[Atomic and stochastic interventions]
+    \label{rem:Atomic-and-stochastic-interventions}
+        Specializing \autoref{defn:Intervened-functor} to the case where ${U}$ is a singleton and $\mathcal{H}(\star\to X) = \delta_a$ recovers atomic or hard interventions. 
+
+        A soft intervention on ${X}$ can be framed using \autoref{defn:Intervened-functor} by setting ${U = X\cup \text{pa}_X}$ and taking ${H}$ to be the subgraph of ${G}$ containing ${X}$ and its parent. We can place any desired measure on each ${\mathcal{H}(X_j\to X_i)}$ where ${X_j}$ is a parent of ${X_i}$. 
+        
+    \end{rem}
 \end{document}
